@@ -7,12 +7,13 @@ var character_scene = preload("res://scenes/duck.tscn")
 
 @onready var audio_manager = get_node("/root/Main/AudioManager")  # Adjust path
 
-
+@onready var hud = get_node("/root/Main/HudCanvas")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	audio_manager.play_sound("game_starts")
 	#var hud = hud_scene.instantiate()
 	#add_child(hud)  # Make sure it's on top of everything
+	hud.visible = true
 
 func add_character():
 	var parent = get_node("/root/Main/GameContainer/Duckland/Pond")  # Adjust path as needed

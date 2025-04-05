@@ -1,17 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsn0wo1napsc6"]
+[gd_scene load_steps=5 format=3 uid="uid://dsn0wo1napsc6"]
 
 [ext_resource type="Script" path="res://scripts/resource_slot.gd" id="1_l23kk"]
 [ext_resource type="Texture2D" uid="uid://d3sgh2bdodwnh" path="res://sprites/duckwheel.png" id="1_wja0t"]
+[ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="2_rpy0b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj457"]
+font = ExtResource("2_rpy0b")
+font_size = 36
 
 [node name="ResourceSlot" type="HBoxContainer" node_paths=PackedStringArray("icon", "label")]
+custom_minimum_size = Vector2(175, 0)
+layout_direction = 2
+offset_right = 139.0
+offset_bottom = 92.0
+alignment = 1
 script = ExtResource("1_l23kk")
 icon = NodePath("TextureRect")
 label = NodePath("AmountLabel")
 
 [node name="AmountLabel" type="Label" parent="."]
+layout_direction = 2
 layout_mode = 2
-text = "0 / 10"
+label_settings = SubResource("LabelSettings_sj457")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_direction = 3
 layout_mode = 2
 texture = ExtResource("1_wja0t")

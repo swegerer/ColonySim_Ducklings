@@ -12,4 +12,4 @@ func _ready():
 
 func resource_update(resource_name, resource):
 	print("hahahlloo")
-	label.text = "0 / 10"
+	label.text = str(resource.current_value)
