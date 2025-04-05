@@ -1,9 +1,11 @@
 extends Node
 
 signal resource_updated(resource_name, resource)  # Signal for updates
+signal locations_updated(locations)
 
 var resources: Dictionary = {}  # Holds the data
 
+var discovered_locations: Array[Node] = []
 
 func _ready():
 		
@@ -17,6 +19,11 @@ func notify_resource_data(p_name):
 	
 	resource_updated.emit(p_name, resources[p_name])  # Notify listeners
 	get_tree().root.print_tree_pretty()
+
+func new_location(location):
+	if location not in discovered_locations:
+		discovered_locations.append(location)
+		locations_updated.emit(discovered_locations)
 
 	
 func change_value_on_resource(resource_name: String, value: int):

@@ -2,8 +2,18 @@ extends Node2D
 
 var discovered_locations: Array[Node] = []
 
+var data_manager
+
+func _ready():
+	await get_tree().process_frame 
+	data_manager = get_tree().get_root().get_node("Main/DataManager")
+	
+	print("DataManager reference:", data_manager)  # Debugging
+	
+
+
 func register_location(location):
-	if location not in discovered_locations:
-		discovered_locations.append(location)
-	if location not in GameData.get_list():
-		GameData.add_item(location)
+	### Vielleicht uneffizient. Muss ich vielleicht schon hier prüfen obs
+	### notwendig ist bevor ich signal aussende 
+	data_manager.new_location(location)
+
