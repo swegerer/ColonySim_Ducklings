@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxci23ca5cru"]
+
+[ext_resource type="Script" path="res://scripts/hover_area_2d.gd" id="1_hojfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djf82"]
+
+[node name="Hover_Area2D" type="Area2D"]
+script = ExtResource("1_hojfx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_djf82")

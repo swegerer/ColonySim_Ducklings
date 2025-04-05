@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d33hbdwewwk41"]
+
+[ext_resource type="Script" path="res://scripts/pond.gd" id="1_luocl"]
+[ext_resource type="Texture2D" uid="uid://bnqjdsbyva6ll" path="res://sprites/pond_01.png" id="2_irmgu"]
+[ext_resource type="Script" path="res://scripts/spawn_button.gd" id="3_wr7d5"]
+[ext_resource type="Texture2D" uid="uid://ep3cplxu7nas" path="res://sprites/icon_03.png" id="3_yi5yo"]
+[ext_resource type="Texture2D" uid="uid://my4rbgwy73xg" path="res://sprites/icon_01.png" id="6_htty3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn73e"]
+radius = 104.0
+height = 238.0
+
+[node name="Pond" type="Node2D" groups=["base"]]
+script = ExtResource("1_luocl")
+
+[node name="Sprite_Pond" type="Sprite2D" parent="."]
+texture = ExtResource("2_irmgu")
+
+[node name="Area2D" type="Area2D" parent="." groups=["base"]]
+
+[node name="Collision_Food" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_kn73e")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -293.0
+offset_top = -280.0
+offset_right = 453.0
+offset_bottom = 6.0
+scale = Vector2(0.36, 0.350237)
+
+[node name="Button_Spawn_Duck" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_yi5yo")
+script = ExtResource("3_wr7d5")
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_htty3")

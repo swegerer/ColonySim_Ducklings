@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp0e2nq8fdsi5"]
+
+[ext_resource type="Script" path="res://scripts/loading_screen.gd" id="1_kaumq"]
+
+[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("1_kaumq")
+progress_bar = NodePath("CanvasLayer/ProgressBar")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -464.0
+offset_top = -115.0
+offset_right = 464.0
+grow_horizontal = 2
+grow_vertical = 0

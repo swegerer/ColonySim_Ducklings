@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=3 uid="uid://b2r7alnx5ht1k"]
+
+[ext_resource type="Script" path="res://scripts/duck.gd" id="1_cn85i"]
+[ext_resource type="Texture2D" uid="uid://tqh03vrxsbx6" path="res://sprites/duckbody.png" id="2_cg7tx"]
+[ext_resource type="Texture2D" uid="uid://d3sgh2bdodwnh" path="res://sprites/duckwheel.png" id="3_slkhy"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_cxlnm"]
+[ext_resource type="Script" path="res://scripts/idle_state.gd" id="5_45v0o"]
+[ext_resource type="Script" path="res://scripts/search_state.gd" id="6_51ody"]
+[ext_resource type="Script" path="res://scripts/homewards_state.gd" id="7_3lp15"]
+[ext_resource type="PackedScene" uid="uid://bcxci23ca5cru" path="res://scenes/hover_area_2d.tscn" id="9_wrtrm"]
+[ext_resource type="Script" path="res://scripts/button_camera.gd" id="10_gn3qm"]
+[ext_resource type="Script" path="res://scripts/infobox.gd" id="10_mxw3h"]
+[ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="11_bnh7a"]
+[ext_resource type="Texture2D" uid="uid://b462rd50g1mp8" path="res://sprites/camera_off.png" id="11_ltoxn"]
+[ext_resource type="Texture2D" uid="uid://bah3a05gtcvem" path="res://sprites/camera_on.png" id="11_n1hvm"]
+[ext_resource type="Texture2D" uid="uid://w1a63mo87wq" path="res://sprites/icon_02.png" id="14_f0c5r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pj7y5"]
+radius = 80.0
+height = 192.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_du8ii"]
+radius = 25.0141
+
+[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button")]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_cn85i")
+fsm = NodePath("FSM")
+camera_button = NodePath("ButtonCamera")
+
+[node name="SpriteDuckbody" type="Sprite2D" parent="."]
+texture = ExtResource("2_cg7tx")
+
+[node name="SpriteFrontwheel" type="Sprite2D" parent="SpriteDuckbody"]
+position = Vector2(-54, 89)
+texture = ExtResource("3_slkhy")
+
+[node name="SpriteBackwheel" type="Sprite2D" parent="SpriteDuckbody"]
+position = Vector2(19, 89)
+texture = ExtResource("3_slkhy")
+
+[node name="CollisionMovement" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 14)
+shape = SubResource("CapsuleShape2D_pj7y5")
+
+[node name="SensesArea2D" type="Area2D" parent="."]
+
+[node name="CollisionSenses" type="CollisionShape2D" parent="SensesArea2D"]
+scale = Vector2(46.8, 41.7)
+shape = SubResource("CircleShape2D_du8ii")
+
+[node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("4_cxlnm")
+character = NodePath("..")
+
+[node name="IdleState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+script = ExtResource("5_45v0o")
+character = NodePath("../..")
+sprite_Duckbody = NodePath("../../SpriteDuckbody")
+sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
+sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
+
+[node name="SearchState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+script = ExtResource("6_51ody")
+character = NodePath("../..")
+sprite_Duckbody = NodePath("../../SpriteDuckbody")
+sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
+sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
+
+[node name="HomewardsState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+script = ExtResource("7_3lp15")
+character = NodePath("../..")
+sprite_Duckbody = NodePath("../../SpriteDuckbody")
+sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
+sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
+
+[node name="HoverArea2D" parent="." instance=ExtResource("9_wrtrm")]
+scale = Vector2(11.7, 13.3)
+collision_layer = 4
+collision_mask = 7
+
+[node name="ButtonCamera" type="Button" parent="."]
+visible = false
+offset_left = -207.5
+offset_top = -207.5
+offset_right = 70.5
+offset_bottom = 64.5
+scale = Vector2(0.299999, 0.300001)
+icon = ExtResource("11_n1hvm")
+script = ExtResource("10_gn3qm")
+camera_on = ExtResource("11_n1hvm")
+camera_off = ExtResource("11_ltoxn")
+
+[node name="Infobox" type="Node2D" parent="." node_paths=PackedStringArray("character", "name_field", "location_list")]
+visible = false
+script = ExtResource("10_mxw3h")
+character = NodePath("..")
+name_field = NodePath("Panel/DuckInfobox")
+location_list = NodePath("Panel/LocationsList")
+
+[node name="Panel" type="Panel" parent="Infobox"]
+offset_left = 148.0
+offset_top = -117.0
+offset_right = 652.0
+offset_bottom = 407.0
+
+[node name="DuckInfobox" type="Label" parent="Infobox/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -479.0
+offset_top = 17.0
+offset_right = -24.0
+offset_bottom = -437.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_bnh7a")
+theme_override_font_sizes/font_size = 50
+text = "UNL"
+
+[node name="StaticLocations" type="Label" parent="Infobox/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -467.0
+offset_top = 119.5
+offset_right = -12.0
+offset_bottom = -334.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_bnh7a")
+theme_override_font_sizes/font_size = 30
+text = "Locations:"
+
+[node name="LocationsList" type="RichTextLabel" parent="Infobox/Panel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 177.0
+offset_right = 437.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("11_bnh7a")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = -112.5
+offset_top = -207.5
+offset_right = 95.5
+offset_bottom = 2.50002
+scale = Vector2(0.39, 0.39)
+icon = ExtResource("14_f0c5r")
+
+[connection signal="area_entered" from="SensesArea2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://t6einiua6sio"]
+
+[ext_resource type="Script" path="res://scripts/gamescript.gd" id="1_yjri5"]
+[ext_resource type="PackedScene" uid="uid://d33hbdwewwk41" path="res://scenes/pond.tscn" id="2_ios16"]
+[ext_resource type="PackedScene" uid="uid://bb0lbcdwe1wmr" path="res://scenes/food.tscn" id="4_egbd6"]
+[ext_resource type="Script" path="res://scripts/character_manager.gd" id="5_vr0yi"]
+
+[node name="Duckland" type="Node2D"]
+script = ExtResource("1_yjri5")
+
+[node name="Pond" parent="." instance=ExtResource("2_ios16")]
+
+[node name="Food" parent="." instance=ExtResource("4_egbd6")]
+position = Vector2(888, -610)
+
+[node name="CharacterManager" type="Node2D" parent="."]
+script = ExtResource("5_vr0yi")
