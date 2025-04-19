@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b0qa8iv8qbdju"]
+
+[ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="1_0p3nh"]
+
+[resource]
+font = ExtResource("1_0p3nh")
+font_size = 36

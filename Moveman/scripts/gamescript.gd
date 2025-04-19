@@ -14,8 +14,10 @@ func _ready():
 	#var hud = hud_scene.instantiate()
 	#add_child(hud)  # Make sure it's on top of everything
 	hud.visible = true
+	
+	#print_tree_pretty()
 
 func add_character():
 	var parent = get_node("/root/Main/GameContainer/Duckland/Pond")  # Adjust path as needed
-	var new_character = character_manager.add_character(parent, character_scene)
+	var new_character = character_manager.add_character(parent, "duck", character_scene)
 	print("Added new character: " + new_character.name)

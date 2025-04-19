@@ -1,15 +1,33 @@
 extends Node
 
-var characters = []  # Stores references to all spawned characters
 
-func add_character(parent: Node, character_scene: PackedScene):
+signal civ_updated(type, civ_data)
+
+var civ_groups: Dictionary = {
+	"duck": CivData.new(10, 3),
+	"builder": CivData.new(5, 1),
+}
+
+var civ_containers: Dictionary = {
+	"duck": [],
+	"builder": [],
+}
+
+func get_civ_summaries():
+	return civ_groups  # Just returns dictionary of CivData
+
+func get_civ_count(civ_name):
+	print("")
+	
+func add_character(parent: Node, type: String, character_scene: PackedScene):
+	if not civ_groups.has(type): return
+	
 	var character = character_scene.instantiate()
+	character.name = "Character_" + str(civ_containers[type].size() + 1)
 	
-	# Example: Assign a random name
-	character.name = "Character_" + str(characters.size() + 1)
-	# Add to game tracking lists
-	characters.append(character)
-	# Add to scene
 	parent.add_child(character)
+	civ_containers[type].append(character)
+	civ_groups[type].set_value(civ_containers[type].size())
+	civ_updated.emit(type, civ_groups[type])
 	
-	return character  # Return the new character in case anything needs modifying
+	return character

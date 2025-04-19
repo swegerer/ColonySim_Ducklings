@@ -18,7 +18,7 @@ func notify_resource_data(p_name):
 	print("EMITTING SIGNAL FROM INSTANCE:", self)
 	
 	resource_updated.emit(p_name, resources[p_name])  # Notify listeners
-	get_tree().root.print_tree_pretty()
+	
 
 func new_location(location):
 	if location not in discovered_locations:

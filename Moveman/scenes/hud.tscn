@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn1xs3377c7ep"]
+[gd_scene load_steps=9 format=3 uid="uid://cn1xs3377c7ep"]
 
 [ext_resource type="PackedScene" uid="uid://dsn0wo1napsc6" path="res://scenes/resource_slot.tscn" id="2_35twb"]
+[ext_resource type="Texture2D" uid="uid://c0vqry8k3bvaw" path="res://sprites/icon_seaweed.png" id="2_uqnwa"]
+[ext_resource type="Texture2D" uid="uid://d30w41xnep4kf" path="res://sprites/icon_water.png" id="3_1xs1e"]
 [ext_resource type="Script" path="res://scripts/clock_label.gd" id="3_8gfg4"]
+[ext_resource type="LabelSettings" uid="uid://b0qa8iv8qbdju" path="res://label_settings/basic_label.tres" id="3_fnir8"]
 [ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="3_ncvw5"]
+[ext_resource type="Texture2D" uid="uid://bkelff80s2xu0" path="res://sprites/icon_duck.png" id="6_1s1r3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cuuqg"]
 font = ExtResource("3_ncvw5")
@@ -11,31 +15,62 @@ font_size = 36
 [node name="CanvasLayer" type="CanvasLayer"]
 visible = false
 
-[node name="Panel" type="PanelContainer" parent="."]
-offset_right = 359.0
-offset_bottom = 119.0
-size_flags_horizontal = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
-size_flags_horizontal = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_bottom = 4.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control"]
 layout_direction = 2
 layout_mode = 2
+offset_right = 392.0
+offset_bottom = 175.0
 
-[node name="SlotFood" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotFood" parent="VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
+custom_minimum_size = Vector2(175, 175)
 layout_mode = 2
+image = ExtResource("2_uqnwa")
 
-[node name="ResourceSlot2" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotWood" parent="VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
 layout_mode = 2
+image = ExtResource("3_1xs1e")
 
-[node name="ClockImage" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ClockImage" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("phase_pb")]
 layout_direction = 3
 layout_mode = 2
 script = ExtResource("3_8gfg4")
+phase_pb = NodePath("../ProgressBar")
 
-[node name="LocationsLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+max_value = 600.0
+show_percentage = false
+
+[node name="CivLabel" type="Label" parent="VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("3_fnir8")
+horizontal_alignment = 1
+
+[node name="SlotCiv" parent="VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
+layout_mode = 2
+image = ExtResource("6_1s1r3")
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LocationsLabel" type="Label" parent="VBoxContainer/Control2"]
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 46.0
 label_settings = SubResource("LabelSettings_cuuqg")
