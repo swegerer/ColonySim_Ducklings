@@ -17,6 +17,8 @@ func _ready():
 		current_state.enter()
 
 func change_state(new_state_name: String):
+	
+	print("New State: " + str(new_state_name))
 	play_quack()
 	
 	if current_state:

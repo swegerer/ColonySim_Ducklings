@@ -26,6 +26,19 @@ func add_character(parent: Node, type: String, character_scene: PackedScene):
 	character.name = "Character_" + str(civ_containers[type].size() + 1)
 	
 	parent.add_child(character)
+	
+	var sense_shape = character.get_node("SensesArea2D/CollisionSenses") as CollisionShape2D
+	var circle_shape = CircleShape2D.new()
+	circle_shape.radius = 130
+	sense_shape.shape = circle_shape
+
+	# Kollisionsbereich setzen
+	var body_shape = character.get_node("CollisionMovement") as CollisionShape2D
+	var rect_shape = RectangleShape2D.new()
+	rect_shape.size = Vector2(15, 25)
+	body_shape.shape = rect_shape
+
+	
 	civ_containers[type].append(character)
 	civ_groups[type].set_value(civ_containers[type].size())
 	civ_updated.emit(type, civ_groups[type])
