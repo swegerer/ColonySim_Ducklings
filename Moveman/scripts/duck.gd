@@ -21,6 +21,7 @@ var lightfog_tilemap
 var darkfog_tilemap
 
 var currently_visible_tiles: Array[Vector2i] = []
+var visible_tile_counter: Dictionary = {}
 
 
 func _ready():
@@ -73,6 +74,9 @@ func _physics_process(delta):
 		if fsm and fsm.current_state.has_method("on_collision"):
 			fsm.current_state.on_collision()
 			
+	if sense_area.get_overlapping_bodies().has(self):
+		reveal_fog()
+	
 	
 func exchange_locations(pond_node):
 	# Get pond's discovered locations
@@ -92,6 +96,8 @@ func exchange_locations(pond_node):
 
 
 func reveal_fog():
+	
+	
 	currently_visible_tiles.clear()
 	
 	var collision_shape = sense_area.get_node("CollisionSenses") as CollisionShape2D
@@ -113,6 +119,7 @@ func reveal_fog():
 	var min_y = floor((area_pos.y - radius) / tile_size.y)
 	var max_y = ceil((area_pos.y + radius) / tile_size.y)
 
+
 	for x in range(min_x, max_x):
 		for y in range(min_y, max_y):
 			var tile_pos = Vector2i(x, y)
@@ -120,7 +127,6 @@ func reveal_fog():
 
 			tile_world_pos.x += tile_size.x / 2
 			tile_world_pos.y += tile_size.y / 2
-
 			
 			# Check if within circle radius
 			if area_pos.distance_to(tile_world_pos) <= radius:
@@ -130,21 +136,16 @@ func reveal_fog():
 				if lightfog_tilemap.get_cell_tile_data(0, tile_pos) != null:
 					lightfog_tilemap.set_cell(0, tile_pos, -1)
 					currently_visible_tiles.append(tile_pos)
+					visible_tile_counter[tile_pos] = visible_tile_counter.get(tile_pos, 0) + 1
 
 
 func restore_light_fog():
 	for tile_pos in currently_visible_tiles:
-		# Add light fog back only if dark fog is gone
-		if darkfog_tilemap.get_cell_tile_data(0, tile_pos) == null:
-			lightfog_tilemap.set_cell(0, tile_pos, 0)
-	currently_visible_tiles.clear()
+		if tile_pos in visible_tile_counter:
+			visible_tile_counter[tile_pos] -= 1
+			if visible_tile_counter[tile_pos] <= 0:
+				visible_tile_counter.erase(tile_pos)
+				if darkfog_tilemap.get_cell_tile_data(0, tile_pos) == null:
+					lightfog_tilemap.set_cell(0, tile_pos, 0)
 
 
-func _on_senses_area_2d_body_entered(body):
-	if body == self:
-		reveal_fog()
-
-
-func _on_senses_area_2d_body_exited(body):
-	if body == self:
-		restore_light_fog()

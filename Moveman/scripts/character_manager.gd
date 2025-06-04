@@ -29,13 +29,13 @@ func add_character(parent: Node, type: String, character_scene: PackedScene):
 	
 	var sense_shape = character.get_node("SensesArea2D/CollisionSenses") as CollisionShape2D
 	var circle_shape = CircleShape2D.new()
-	circle_shape.radius = 130
+	circle_shape.radius = 450
 	sense_shape.shape = circle_shape
 
 	# Kollisionsbereich setzen
 	var body_shape = character.get_node("CollisionMovement") as CollisionShape2D
 	var rect_shape = RectangleShape2D.new()
-	rect_shape.size = Vector2(15, 25)
+	rect_shape.size = Vector2(25, 35)
 	body_shape.shape = rect_shape
 
 	
