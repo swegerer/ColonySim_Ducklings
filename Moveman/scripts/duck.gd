@@ -23,6 +23,7 @@ var darkfog_tilemap
 var currently_visible_tiles: Array[Vector2i] = []
 var visible_tile_counter: Dictionary = {}
 
+var time_since_last_fog_check = 0
 
 func _ready():
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
@@ -76,6 +77,8 @@ func _physics_process(delta):
 			
 	if sense_area.get_overlapping_bodies().has(self):
 		reveal_fog()
+		
+
 	
 	
 func exchange_locations(pond_node):
@@ -102,9 +105,7 @@ func reveal_fog():
 	
 	var collision_shape = sense_area.get_node("CollisionSenses") as CollisionShape2D
 	
-	print("CollisionShape2D shape:", collision_shape.shape)
-	print("Shape type:", typeof(collision_shape.shape))
-	print("Is CircleShape2D:", collision_shape.shape is CircleShape2D)
+
 	var circle_shape = collision_shape.shape as CircleShape2D
 	if circle_shape == null:
 		print("Not a circle shape.")
@@ -137,15 +138,5 @@ func reveal_fog():
 					lightfog_tilemap.set_cell(0, tile_pos, -1)
 					currently_visible_tiles.append(tile_pos)
 					visible_tile_counter[tile_pos] = visible_tile_counter.get(tile_pos, 0) + 1
-
-
-func restore_light_fog():
-	for tile_pos in currently_visible_tiles:
-		if tile_pos in visible_tile_counter:
-			visible_tile_counter[tile_pos] -= 1
-			if visible_tile_counter[tile_pos] <= 0:
-				visible_tile_counter.erase(tile_pos)
-				if darkfog_tilemap.get_cell_tile_data(0, tile_pos) == null:
-					lightfog_tilemap.set_cell(0, tile_pos, 0)
-
+					
 
