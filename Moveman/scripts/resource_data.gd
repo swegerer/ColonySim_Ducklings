@@ -14,3 +14,6 @@ func set_max(value: int):
 func _init(max: int, value: int):
 	max_value = max
 	current_value = value
+	
+func get_value():
+	return current_value

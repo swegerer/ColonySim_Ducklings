@@ -38,7 +38,6 @@ func add_character(parent: Node, type: String, character_scene: PackedScene):
 	rect_shape.size = Vector2(25, 35)
 	body_shape.shape = rect_shape
 
-	
 	civ_containers[type].append(character)
 	civ_groups[type].set_value(civ_containers[type].size())
 	civ_updated.emit(type, civ_groups[type])

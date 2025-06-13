@@ -17,8 +17,8 @@ var lock_ui = false
 var data_manager
 
 
-var lightfog_tilemap
-var darkfog_tilemap
+var tilemap_fog
+
 
 var currently_visible_tiles: Array[Vector2i] = []
 var visible_tile_counter: Dictionary = {}
@@ -27,8 +27,7 @@ var time_since_last_fog_check = 0
 
 func _ready():
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
-	lightfog_tilemap = get_tree().get_root().get_node("Main/GameContainer/Duckland/Fog/LightFog")
-	darkfog_tilemap = get_tree().get_root().get_node("Main/GameContainer/Duckland/Fog/DarkFog")
+	tilemap_fog = get_tree().get_root().get_node("Main/GameContainer/Duckland/Fog/Tilemap_Fog")
 	
 	hover_area.shape_size = Vector2(70, 70)
 	hover_area.connect("hovered", _on_hover)
@@ -99,13 +98,9 @@ func exchange_locations(pond_node):
 
 
 func reveal_fog():
-	
-	
 	currently_visible_tiles.clear()
-	
 	var collision_shape = sense_area.get_node("CollisionSenses") as CollisionShape2D
 	
-
 	var circle_shape = collision_shape.shape as CircleShape2D
 	if circle_shape == null:
 		print("Not a circle shape.")
@@ -113,7 +108,7 @@ func reveal_fog():
 
 	var radius = circle_shape.radius
 	var area_pos = sense_area.global_position
-	var tile_size = lightfog_tilemap.tile_set.tile_size
+	var tile_size = tilemap_fog.tile_set.tile_size
 
 	var min_x = floor((area_pos.x - radius) / tile_size.x)
 	var max_x = ceil((area_pos.x + radius) / tile_size.x)
@@ -131,11 +126,9 @@ func reveal_fog():
 			
 			# Check if within circle radius
 			if area_pos.distance_to(tile_world_pos) <= radius:
-				if darkfog_tilemap.get_cell_tile_data(0, tile_pos) != null:
-					darkfog_tilemap.set_cell(0, tile_pos, -1)
 				
-				if lightfog_tilemap.get_cell_tile_data(0, tile_pos) != null:
-					lightfog_tilemap.set_cell(0, tile_pos, -1)
+				if tilemap_fog.get_cell_tile_data(0, tile_pos) != null:
+					tilemap_fog.set_cell(0, tile_pos, -1)
 					currently_visible_tiles.append(tile_pos)
 					visible_tile_counter[tile_pos] = visible_tile_counter.get(tile_pos, 0) + 1
 					

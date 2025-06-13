@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn1xs3377c7ep"]
+[gd_scene load_steps=11 format=3 uid="uid://cn1xs3377c7ep"]
 
 [ext_resource type="PackedScene" uid="uid://dsn0wo1napsc6" path="res://scenes/resource_slot.tscn" id="2_35twb"]
 [ext_resource type="Texture2D" uid="uid://c0vqry8k3bvaw" path="res://sprites/icon_seaweed.png" id="2_uqnwa"]
@@ -8,12 +8,15 @@
 [ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="3_ncvw5"]
 [ext_resource type="Texture2D" uid="uid://bkelff80s2xu0" path="res://sprites/icon_duck.png" id="6_1s1r3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_cuuqg"]
-font = ExtResource("3_ncvw5")
-font_size = 36
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc63s"]
+bg_color = Color(0.697813, 0.585243, 0.339938, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tw02j"]
 bg_color = Color(0.855581, 0.426936, 0.698514, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuuqg"]
+font = ExtResource("3_ncvw5")
+font_size = 36
 
 [node name="CanvasLayer" type="CanvasLayer"]
 visible = false
@@ -33,64 +36,73 @@ size_flags_vertical = 0
 [node name="Control" type="Control" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control"]
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/Control"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xc63s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/Panel"]
 layout_direction = 2
 layout_mode = 2
-offset_right = 392.0
+offset_right = 406.0
 offset_bottom = 175.0
 
-[node name="SlotFood" parent="Control/VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotFood" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
 custom_minimum_size = Vector2(175, 175)
 layout_mode = 2
 image = ExtResource("2_uqnwa")
 
-[node name="SlotWood" parent="Control/VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotWood" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
 layout_mode = 2
 image = ExtResource("3_1xs1e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Control/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Control/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ClockImage" type="TextureRect" parent="Control/VBoxContainer/Control/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("phase_pb")]
+[node name="ClockImage" type="TextureRect" parent="Control/VBoxContainer/Control/Panel/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("phase_pb")]
 layout_direction = 3
 layout_mode = 2
 script = ExtResource("3_8gfg4")
 phase_pb = NodePath("../ProgressBar")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer/Control/Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 600.0
 show_percentage = false
 
-[node name="CivLabel" type="Label" parent="Control/VBoxContainer/Control/HBoxContainer"]
+[node name="CivLabel" type="Label" parent="Control/VBoxContainer/Control/Panel/HBoxContainer"]
 layout_mode = 2
 label_settings = ExtResource("3_fnir8")
 horizontal_alignment = 1
 
-[node name="SlotCiv" parent="Control/VBoxContainer/Control/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotCiv" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
 layout_mode = 2
 image = ExtResource("6_1s1r3")
 
 [node name="Control2" type="Control" parent="Control/VBoxContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(150, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
-
-[node name="LocationsLabel" type="Label" parent="Control/VBoxContainer/Control2"]
-layout_mode = 2
-offset_right = 1.0
-offset_bottom = 46.0
-label_settings = SubResource("LabelSettings_cuuqg")
 
 [node name="Panel" type="Panel" parent="Control/VBoxContainer/Control2"]
 show_behind_parent = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-offset_right = 1000.0
-offset_bottom = 1000.0
+offset_right = 300.0
+offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tw02j")
+
+[node name="LocationsLabel" type="Label" parent="Control/VBoxContainer/Control2/Panel"]
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 46.0
+label_settings = SubResource("LabelSettings_cuuqg")
