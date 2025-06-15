@@ -1,32 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsn0wo1napsc6"]
+[gd_scene load_steps=5 format=3 uid="uid://dsn0wo1napsc6"]
 
 [ext_resource type="Script" path="res://scripts/display_slot.gd" id="1_17gjk"]
 [ext_resource type="Texture2D" uid="uid://d3sgh2bdodwnh" path="res://sprites/duckwheel.png" id="1_wja0t"]
+[ext_resource type="Script" path="res://scenes/panel_script.gd" id="2_7tmp5"]
 [ext_resource type="LabelSettings" uid="uid://b0qa8iv8qbdju" path="res://label_settings/basic_label.tres" id="2_ngc1p"]
 
 [node name="ResourceSlot" type="HBoxContainer" node_paths=PackedStringArray("icon", "label")]
 layout_direction = 2
 offset_right = 98.0
 offset_bottom = 92.0
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 12
 alignment = 1
 script = ExtResource("1_17gjk")
-icon = NodePath("TextureRect")
-label = NodePath("AmountLabel")
+icon = NodePath("MarginContainer2/Panel/TextureRect")
+label = NodePath("MarginContainer2/Panel/MarginContainer/AmountLabel")
 
-[node name="AmountLabel" type="Label" parent="."]
-layout_direction = 2
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
-label_settings = ExtResource("2_ngc1p")
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_direction = 3
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+show_behind_parent = true
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+script = ExtResource("2_7tmp5")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/Panel"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource("1_wja0t")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Panel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+
+[node name="AmountLabel" type="Label" parent="MarginContainer2/Panel/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+label_settings = ExtResource("2_ngc1p")
+horizontal_alignment = 1
+vertical_alignment = 1

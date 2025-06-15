@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn1xs3377c7ep"]
+[gd_scene load_steps=10 format=3 uid="uid://cn1xs3377c7ep"]
 
+[ext_resource type="Script" path="res://scenes/panel_script.gd" id="1_o8gh3"]
 [ext_resource type="PackedScene" uid="uid://dsn0wo1napsc6" path="res://scenes/resource_slot.tscn" id="2_35twb"]
 [ext_resource type="Texture2D" uid="uid://c0vqry8k3bvaw" path="res://sprites/icon_seaweed.png" id="2_uqnwa"]
-[ext_resource type="Texture2D" uid="uid://d30w41xnep4kf" path="res://sprites/icon_water.png" id="3_1xs1e"]
 [ext_resource type="Script" path="res://scripts/clock_label.gd" id="3_8gfg4"]
-[ext_resource type="LabelSettings" uid="uid://b0qa8iv8qbdju" path="res://label_settings/basic_label.tres" id="3_fnir8"]
 [ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="3_ncvw5"]
 [ext_resource type="Texture2D" uid="uid://bkelff80s2xu0" path="res://sprites/icon_duck.png" id="6_1s1r3"]
 
@@ -19,90 +18,80 @@ font = ExtResource("3_ncvw5")
 font_size = 36
 
 [node name="CanvasLayer" type="CanvasLayer"]
-visible = false
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_bottom = 4.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 100.0
+offset_bottom = 208.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_constants/separation = 26
 
-[node name="Control" type="Control" parent="Control/VBoxContainer"]
-custom_minimum_size = Vector2(150, 150)
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control/VBoxContainer/Control"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xc63s")
+script = ExtResource("1_o8gh3")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xc63s")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Panel/MarginContainer"]
 layout_direction = 2
 layout_mode = 2
-offset_right = 406.0
-offset_bottom = 175.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 12
 
-[node name="SlotFood" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
-custom_minimum_size = Vector2(175, 175)
+[node name="SlotFood" parent="VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_35twb")]
+layout_direction = 0
 layout_mode = 2
 image = ExtResource("2_uqnwa")
 
-[node name="SlotWood" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
+[node name="SlotCiv" parent="VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_35twb")]
+layout_direction = 0
 layout_mode = 2
-image = ExtResource("3_1xs1e")
+image = ExtResource("6_1s1r3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Control/Panel/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="ClockImage" type="TextureRect" parent="Control/VBoxContainer/Control/Panel/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("phase_pb")]
+[node name="ClockImage" type="TextureRect" parent="VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("phase_pb")]
 layout_direction = 3
 layout_mode = 2
+size_flags_vertical = 0
 script = ExtResource("3_8gfg4")
 phase_pb = NodePath("../ProgressBar")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer/Control/Panel/HBoxContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 600.0
 show_percentage = false
 
-[node name="CivLabel" type="Label" parent="Control/VBoxContainer/Control/Panel/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-label_settings = ExtResource("3_fnir8")
-horizontal_alignment = 1
 
-[node name="SlotCiv" parent="Control/VBoxContainer/Control/Panel/HBoxContainer" instance=ExtResource("2_35twb")]
-layout_mode = 2
-image = ExtResource("6_1s1r3")
-
-[node name="Control2" type="Control" parent="Control/VBoxContainer"]
-custom_minimum_size = Vector2(150, 15)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-
-[node name="Panel" type="Panel" parent="Control/VBoxContainer/Control2"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer2"]
 show_behind_parent = true
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-offset_right = 300.0
-offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tw02j")
+script = ExtResource("1_o8gh3")
 
-[node name="LocationsLabel" type="Label" parent="Control/VBoxContainer/Control2/Panel"]
-layout_mode = 2
-offset_right = 1.0
-offset_bottom = 46.0
+[node name="LocationsLabel" type="Label" parent="VBoxContainer/MarginContainer2/Panel2"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 200.0
 label_settings = SubResource("LabelSettings_cuuqg")
