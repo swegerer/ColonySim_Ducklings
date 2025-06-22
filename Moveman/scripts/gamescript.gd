@@ -7,8 +7,6 @@ var character_scene = preload("res://scenes/duck.tscn")
 
 @onready var audio_manager = get_node("/root/Main/AudioManager")  # Adjust path
 
-@onready var hud = get_node("/root/Main/HudCanvas")
-# Called when the node enters the scene tree for the first time.
 
 
 @onready var data_manager
@@ -22,9 +20,9 @@ func _ready():
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
 	
 	audio_manager.play_sound("game_starts")
-	#var hud = hud_scene.instantiate()
+	
+
 	#add_child(hud)  # Make sure it's on top of everything
-	hud.visible = true
 	
 	#print_tree_pretty()
 

@@ -27,6 +27,8 @@ func add_character(parent: Node, type: String, character_scene: PackedScene):
 	
 	parent.add_child(character)
 	
+
+	
 	var sense_shape = character.get_node("SensesArea2D/CollisionSenses") as CollisionShape2D
 	var circle_shape = CircleShape2D.new()
 	circle_shape.radius = 450

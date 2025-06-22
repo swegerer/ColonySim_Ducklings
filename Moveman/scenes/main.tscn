@@ -1,8 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba8yw2mj62mpb"]
+[gd_scene load_steps=9 format=3 uid="uid://ba8yw2mj62mpb"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_q68qb"]
-[ext_resource type="Texture2D" uid="uid://tdhepjbhtm20" path="res://sprites/quintus_01.png" id="2_b58tj"]
-[ext_resource type="Script" path="res://scripts/texture_rect.gd" id="3_u2nl1"]
 [ext_resource type="PackedScene" uid="uid://shxuxksrrup3" path="res://scenes/audio_manager.tscn" id="4_j7g5b"]
 [ext_resource type="Script" path="res://scripts/camera_main.gd" id="5_f0gc1"]
 [ext_resource type="PackedScene" uid="uid://darg2nt0qujan" path="res://scenes/camera_duck.tscn" id="6_pk7jy"]
@@ -17,19 +15,6 @@ script = ExtResource("1_q68qb")
 [node name="DataManager" type="Node2D" parent="."]
 script = ExtResource("8_e0i8b")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_b58tj")
-expand_mode = 1
-stretch_mode = 6
-script = ExtResource("3_u2nl1")
-
 [node name="GameContainer" type="Node2D" parent="."]
 
 [node name="AudioManager" parent="." instance=ExtResource("4_j7g5b")]
@@ -42,5 +27,8 @@ script = ExtResource("5_f0gc1")
 [node name="InputListener" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("7_a2m1a")]
 camera = NodePath("../CameraDuck")
 
-[node name="HudCanvas" parent="." groups=["HUD"] instance=ExtResource("10_uoq5c")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("10_uylx7")
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("10_uoq5c")]
+visible = false

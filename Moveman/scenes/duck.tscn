@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2r7alnx5ht1k"]
+[gd_scene load_steps=18 format=3 uid="uid://b2r7alnx5ht1k"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_cn85i"]
 [ext_resource type="Texture2D" uid="uid://tqh03vrxsbx6" path="res://sprites/duckbody.png" id="2_cg7tx"]
@@ -22,7 +22,9 @@ height = 192.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_du8ii"]
 radius = 0.01
 
-[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5vq4"]
+
+[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button") groups=["ducks"]]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_cn85i")
 fsm = NodePath("FSM")
@@ -44,6 +46,7 @@ position = Vector2(-12, 14)
 shape = SubResource("CapsuleShape2D_pj7y5")
 
 [node name="SensesArea2D" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="CollisionSenses" type="CollisionShape2D" parent="SensesArea2D"]
 scale = Vector2(1.122, 1)
@@ -153,6 +156,12 @@ offset_right = 95.5
 offset_bottom = 2.50002
 scale = Vector2(0.39, 0.39)
 icon = ExtResource("14_f0c5r")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="InterarctionArea" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(12.98, 12.1)
+shape = SubResource("RectangleShape2D_t5vq4")
 
 [connection signal="body_entered" from="SensesArea2D" to="." method="_on_senses_area_2d_body_entered"]
 [connection signal="body_exited" from="SensesArea2D" to="." method="_on_senses_area_2d_body_exited"]

@@ -4,10 +4,9 @@ var data_manager
 var civ_manager
 var civ_polling := true
 
-@onready var locations_list = get_node("/root/Main/HudCanvas/VBoxContainer/MarginContainer2/Panel2/LocationsLabel")
-@onready var resource_food = get_node("/root/Main/HudCanvas/VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/SlotFood")  # Update this based on your actual HUD elements
-@onready var civ_label = get_node("/root/Main/HudCanvas/VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/CivLabel")
-@onready var civ_duck = get_node("/root/Main/HudCanvas/VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/SlotCiv")  # Update this based on your actual HUD elements
+@onready var locations_list = get_node("/root/Main/CanvasLayer/HUD/VBoxContainer/MarginContainer2/Panel2/LocationsLabel")
+@onready var resource_food = get_node("/root/Main/CanvasLayer/HUD/VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/SlotFood")  # Update this based on your actual HUD elements
+@onready var civ_duck = get_node("/root/Main/CanvasLayer/HUD/VBoxContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/SlotCiv")  # Update this based on your actual HUD elements
 
 func _ready():
 	

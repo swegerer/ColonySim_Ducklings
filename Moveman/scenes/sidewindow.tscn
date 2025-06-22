@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxpdqxixkfr30"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7qjk"]
+
+[node name="Sidewindow" type="MarginContainer"]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7qjk")

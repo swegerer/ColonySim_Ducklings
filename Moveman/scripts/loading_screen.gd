@@ -7,8 +7,13 @@ var path = "res://scenes/duckland.tscn"
 var loaded_scene : PackedScene = null
 var load_progress = [0.0]
 
+signal level_loaded(new_signal)
+
 func _ready():
 	ResourceLoader.load_threaded_request(path)
+
+
+	
 
 func _process(delta):
 	var status = ResourceLoader.load_threaded_get_status(path, load_progress)
@@ -26,3 +31,5 @@ func _process(delta):
 
 		# Load game scene inside the main scene's GameContainer
 		main_scene.load_scene(path)
+		
+		emit_signal("level_loaded", true)
