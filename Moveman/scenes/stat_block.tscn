@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ahw0544hqkr"]
+
+[ext_resource type="Script" path="res://scripts/stat_block.gd" id="1_7x6eq"]
+[ext_resource type="PackedScene" uid="uid://0jpq140doxoa" path="res://scenes/stat_line.tscn" id="1_khemn"]
+
+[node name="Stat_Block" type="MarginContainer" node_paths=PackedStringArray("VBox")]
+script = ExtResource("1_7x6eq")
+stat_line = ExtResource("1_khemn")
+VBox = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2

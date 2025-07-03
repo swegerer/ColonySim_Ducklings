@@ -28,7 +28,7 @@ func _ready():
 
 func add_character():
 	if duck_cost <= data_manager.get_value_on_resource("food"):
-		var parent = get_node("/root/Main/GameContainer/Duckland/Pond")  # Adjust path as needed
+		var parent = get_node("/root/Main/GameContainer/Duckland/Spring")  # Adjust path as needed
 		var new_character = character_manager.add_character(parent, "duck", character_scene)
 		print("Added new character: " + new_character.name)
 		

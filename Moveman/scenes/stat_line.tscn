@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://0jpq140doxoa"]
+
+[ext_resource type="Script" path="res://scripts/stat_line.gd" id="1_3h18y"]
+[ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="2_7bvs2"]
+[ext_resource type="Texture2D" uid="uid://civkcuju7tiw5" path="res://sprites/check_normal.png" id="3_e33t7"]
+[ext_resource type="Texture2D" uid="uid://bgptf8q68qx83" path="res://sprites/check_pressed.png" id="4_8jrkr"]
+[ext_resource type="Texture2D" uid="uid://cidiqdpub0von" path="res://sprites/check_hover.png" id="5_u804y"]
+[ext_resource type="Texture2D" uid="uid://c23isvwrepgpe" path="res://sprites/check_disabled.png" id="6_tjibq"]
+
+[node name="Stat_Line" type="MarginContainer" node_paths=PackedStringArray("stat_label", "stat_edit")]
+script = ExtResource("1_3h18y")
+stat_label = NodePath("HBoxContainer/Label")
+stat_edit = NodePath("HBoxContainer/LineEdit")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7bvs2")
+theme_override_font_sizes/font_size = 48
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_e33t7")
+texture_pressed = ExtResource("4_8jrkr")
+texture_hover = ExtResource("5_u804y")
+texture_disabled = ExtResource("6_tjibq")
+ignore_texture_size = true
+stretch_mode = 4

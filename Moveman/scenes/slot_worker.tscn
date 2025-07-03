@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://x1elgs8c4obm"]
+
+[ext_resource type="Texture2D" uid="uid://b0glnp2pukri5" path="res://sprites/pond_icon_01.png" id="1_1qrow"]
+
+[node name="slot_worker" type="TextureButton"]
+custom_minimum_size = Vector2(100, 100)
+texture_normal = ExtResource("1_1qrow")
+ignore_texture_size = true
+stretch_mode = 4

@@ -62,42 +62,14 @@ func _on_unhover(area):
 func _on_click(area):
 	u_lock_ui()
 	
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
-		var marker = ColorRect.new()
-		marker.color = Color.RED
-		marker.size = Vector2(10, 10)
-		marker.position = event.position - Vector2(5, 5)
-		get_tree().current_scene.add_child(marker)
 		
-		
-		var world_pos = get_global_mouse_position()
-		
-		handle_double_click(world_pos)
-		
-func handle_double_click(pos: Vector2):
-	var space_state = get_world_2d().direct_space_state
 
-	var query = PhysicsPointQueryParameters2D.new()
-	query.position = pos
-	query.collide_with_areas = true
-	query.collide_with_bodies = false  # Or true if ducks are also bodies
-	query.collision_mask = 0xFFFFFFFF
-
-	var hits = space_state.intersect_point(query, 5)
-
-	for hit in hits:
-		var node = hit.collider
-		while node:
-			if node.is_in_group("ducks"):
-				print("Duck selected:", node.name)
-				focus_camera_on(node)
-				return
-			node = node.get_parent()
 
 func focus_camera_on(colider):
 	camera_duck.follow(self)
+	camera_duck.set_sideview()
 	camera_duck.toggle_camera()
+	
 	
 	
 	

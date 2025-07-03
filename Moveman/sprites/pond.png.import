@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnqjdsbyva6ll"
-path="res://.godot/imported/pond_01.png-0287e5f38473b24edaf102cc3dbd958e.ctex"
+uid="uid://bhx2ch8677j4n"
+path="res://.godot/imported/pond.png-6f031b875766b6c37a6c1803f2808f0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pond_01.png"
-dest_files=["res://.godot/imported/pond_01.png-0287e5f38473b24edaf102cc3dbd958e.ctex"]
+source_file="res://sprites/pond.png"
+dest_files=["res://.godot/imported/pond.png-6f031b875766b6c37a6c1803f2808f0f.ctex"]
 
 [params]
 

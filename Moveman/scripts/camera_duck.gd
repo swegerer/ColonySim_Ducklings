@@ -15,6 +15,10 @@ func follow(target: Node):
 
 	current_target = target
 	global_position = target.global_position  # Instantly match position
+	
+func set_sideview():
+	var screen_size = get_viewport().get_visible_rect().size
+	offset = Vector2(screen_size.x * 0.3, 0)
 
 func toggle_camera():
 	var button = get_node("../ButtonCamera")

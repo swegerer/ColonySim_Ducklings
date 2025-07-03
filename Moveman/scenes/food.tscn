@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb0lbcdwe1wmr"]
+[gd_scene load_steps=5 format=3 uid="uid://bb0lbcdwe1wmr"]
 
 [ext_resource type="Script" path="res://scripts/source_food.gd" id="1_u6bro"]
 [ext_resource type="Texture2D" uid="uid://clmbf0u8n5574" path="res://sprites/food_01.png" id="2_vtc7n"]
+[ext_resource type="PackedScene" uid="uid://bkecn8mb1im6b" path="res://slot_worker_manager.tscn" id="3_pfkri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_seh5e"]
 radius = 237.5
 height = 545.0
 
-[node name="Food" type="Node2D"]
+[node name="Food" type="Node2D" node_paths=PackedStringArray("slot_manager")]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_u6bro")
+slot_manager = NodePath("slot_worker_manager")
 
 [node name="Sprite_Food" type="Sprite2D" parent="."]
 texture = ExtResource("2_vtc7n")
@@ -18,3 +20,5 @@ texture = ExtResource("2_vtc7n")
 
 [node name="Collision_Food" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_seh5e")
+
+[node name="slot_worker_manager" parent="." instance=ExtResource("3_pfkri")]

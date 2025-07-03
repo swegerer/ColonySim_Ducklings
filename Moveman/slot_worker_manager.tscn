@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkecn8mb1im6b"]
+
+[ext_resource type="Script" path="res://slot_worker_manager.gd" id="1_5fcrr"]
+
+[node name="slot_worker_manager" type="Node2D" node_paths=PackedStringArray("hbox")]
+script = ExtResource("1_5fcrr")
+hbox = NodePath("HBox")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+offset_left = -400.0
+offset_top = 450.0
+offset_right = -360.0
+offset_bottom = 490.0
