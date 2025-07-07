@@ -8,6 +8,7 @@ func _ready():
 	slot_manager.redraw_slots()
 
 func ask_entry(duck):
+	print("we entered source food")
 	slot_manager.request_slot(duck)
 
 

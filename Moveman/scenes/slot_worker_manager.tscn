@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkecn8mb1im6b"]
+
+[ext_resource type="Script" path="res://scripts/slot_worker_manager.gd" id="1_5fcrr"]
+[ext_resource type="Texture2D" uid="uid://b0glnp2pukri5" path="res://sprites/pond_icon_01.png" id="2_7gypm"]
+[ext_resource type="Texture2D" uid="uid://bk1clwx6tevtl" path="res://sprites/pond_icon_02.png" id="3_0xsml"]
+
+[node name="slot_worker_manager" type="Node2D" node_paths=PackedStringArray("hbox")]
+script = ExtResource("1_5fcrr")
+hbox = NodePath("HBox")
+empty_slot_image = ExtResource("2_7gypm")
+full_slot_image = ExtResource("3_0xsml")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+offset_left = -400.0
+offset_top = 450.0
+offset_right = -360.0
+offset_bottom = 490.0

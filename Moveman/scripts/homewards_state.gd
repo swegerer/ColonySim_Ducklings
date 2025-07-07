@@ -16,7 +16,6 @@ func exit():
 	print("Exit Homewards State")
 
 func update(delta):
-	super(delta)
 	state_machine.character.velocity = direction * speed
 	state_machine.character.move_and_slide()
 	

@@ -16,18 +16,23 @@ func _ready():
 		current_state = get_child(0)  # Start with the first state
 		current_state.enter()
 
-func change_state(new_state_name: String):
-	
+func change_state(new_state_name: String, location_node_arg: Node = null, character_arg: CharacterBody2D = null):
 	print("New State: " + str(new_state_name))
 	play_quack()
 	
 	if current_state:
 		current_state.exit()
-	
+		
 	var new_state = get_node_or_null(new_state_name)
-	if new_state:
-		current_state = new_state
-		current_state.enter()
+	current_state = new_state
+		
+	if character_arg != null:
+		current_state.character = character_arg
+
+	if location_node_arg != null:
+		current_state.location_node = location_node_arg
+	
+	current_state.enter()
 
 func _process(delta):
 	if current_state:

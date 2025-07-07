@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2r7alnx5ht1k"]
+[gd_scene load_steps=19 format=3 uid="uid://b2r7alnx5ht1k"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_cn85i"]
 [ext_resource type="Texture2D" uid="uid://tqh03vrxsbx6" path="res://sprites/duckbody.png" id="2_cg7tx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/idle_state.gd" id="5_45v0o"]
 [ext_resource type="Script" path="res://scripts/search_state.gd" id="6_51ody"]
 [ext_resource type="Script" path="res://scripts/homewards_state.gd" id="7_3lp15"]
+[ext_resource type="Script" path="res://scripts/work_state.gd" id="8_3fphn"]
 [ext_resource type="PackedScene" uid="uid://bcxci23ca5cru" path="res://scenes/hover_area_2d.tscn" id="9_wrtrm"]
 [ext_resource type="Script" path="res://scripts/button_camera.gd" id="10_gn3qm"]
 [ext_resource type="Script" path="res://scripts/infobox.gd" id="10_mxw3h"]
@@ -24,11 +25,14 @@ radius = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5vq4"]
 
-[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button") groups=["ducks"]]
+[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel") groups=["ducks"]]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_cn85i")
 fsm = NodePath("FSM")
 camera_button = NodePath("ButtonCamera")
+sprite_Duckbody = NodePath("SpriteDuckbody")
+sprite_Frontwheel = NodePath("SpriteDuckbody/SpriteFrontwheel")
+sprite_Backwheel = NodePath("SpriteDuckbody/SpriteBackwheel")
 
 [node name="SpriteDuckbody" type="Sprite2D" parent="."]
 texture = ExtResource("2_cg7tx")
@@ -56,26 +60,21 @@ shape = SubResource("CircleShape2D_du8ii")
 script = ExtResource("4_cxlnm")
 character = NodePath("..")
 
-[node name="IdleState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+[node name="IdleState" type="Node2D" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("5_45v0o")
 character = NodePath("../..")
-sprite_Duckbody = NodePath("../../SpriteDuckbody")
-sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
-sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
 
-[node name="SearchState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+[node name="SearchState" type="Node2D" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("6_51ody")
 character = NodePath("../..")
-sprite_Duckbody = NodePath("../../SpriteDuckbody")
-sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
-sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
 
-[node name="HomewardsState" type="Node" parent="FSM" node_paths=PackedStringArray("character", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel")]
+[node name="HomewardsState" type="Node2D" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("7_3lp15")
 character = NodePath("../..")
-sprite_Duckbody = NodePath("../../SpriteDuckbody")
-sprite_Frontwheel = NodePath("../../SpriteDuckbody/SpriteFrontwheel")
-sprite_Backwheel = NodePath("../../SpriteDuckbody/SpriteBackwheel")
+
+[node name="WorkState" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+script = ExtResource("8_3fphn")
+character = NodePath("../..")
 
 [node name="HoverArea2D" parent="." instance=ExtResource("9_wrtrm")]
 scale = Vector2(11.7, 13.3)

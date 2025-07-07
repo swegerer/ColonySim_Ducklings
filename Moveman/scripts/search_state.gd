@@ -18,7 +18,6 @@ func enter():
 	
 
 func update(delta):
-	super(delta)
 	
 	timer += delta
 	direction_timer += delta

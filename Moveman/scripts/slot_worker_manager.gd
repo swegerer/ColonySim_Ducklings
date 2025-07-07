@@ -11,6 +11,9 @@ var slots := []      # UI-Repräsentationen
 var occupants := []  # Ducks, die gerade arbeiten
 var waiting_queue := [] # Ducks in der Warteschlange
 
+@export var empty_slot_image: Texture
+@export var full_slot_image: Texture
+
 func _ready():
 	redraw_slots()
 
@@ -29,7 +32,11 @@ func redraw_slots():
 		occupants.append(null)
 
 func request_slot(duck):
+	print("----------request_slot")
+	
 	for i in occupants.size():
+		print("Occupant type at slot ", i, ": ", typeof(occupants[i]), " – Incoming duck type: ", typeof(duck))
+
 		if occupants[i] == null:
 			occupants[i] = duck
 			print("Duck assigned to slot ", i)
@@ -54,5 +61,9 @@ func release_slot(duck):
 
 func update_ui():
 	for i in slots.size():
-		slots[i].modulate = Color(1, 1, 1) if occupants[i] != null else Color(0.5, 0.5, 0.5)
+		if occupants[i] != null:
+			slots[i].set_texture_normal(full_slot_image)
+		else:
+			slots[i].set_texture_normal(empty_slot_image)
+		
 

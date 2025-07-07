@@ -12,6 +12,10 @@ var known_locations: Array[Node] = []
 
 @onready var camera_duck = get_tree().current_scene.find_child("CameraDuck", true, false)
 
+@export var sprite_Duckbody: Sprite2D
+@export var sprite_Frontwheel: Sprite2D
+@export var sprite_Backwheel: Sprite2D
+
 
 var is_hovered = false
 signal update_data
@@ -40,6 +44,17 @@ func _ready():
 	
 	data_manager.change_max_on_resource("food", 20)
 
+func update_sprites():
+	if velocity.x > 0:
+		sprite_Duckbody.flip_h = true
+	elif velocity.x < 0:
+		sprite_Duckbody.flip_h = false
+	# Update wheel rotations
+	sprite_Frontwheel.rotation += velocity.length() * 0.1
+	sprite_Backwheel.rotation += velocity.length() * 0.1
+	
+func _process(delta):
+	update_sprites()
 
 func changed_Info():
 	update_data.emit()
