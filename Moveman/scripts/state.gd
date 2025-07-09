@@ -24,6 +24,7 @@ func _on_Area2D_area_entered(area):
 	location_node = area.get_parent()
 	
 	if area.is_in_group("food") and takes_work:
+		print("ChangeState: " + character.name +  "on place: ")
 		state_machine.change_state("WorkState", area.get_parent(), character)
 	elif area.is_in_group("food") and location_node not in character.known_locations:
 		character.known_locations.append(location_node)

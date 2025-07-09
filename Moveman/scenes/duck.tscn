@@ -25,7 +25,7 @@ radius = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5vq4"]
 
-[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel") groups=["ducks"]]
+[node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel", "progress_bar") groups=["ducks"]]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_cn85i")
 fsm = NodePath("FSM")
@@ -33,6 +33,7 @@ camera_button = NodePath("ButtonCamera")
 sprite_Duckbody = NodePath("SpriteDuckbody")
 sprite_Frontwheel = NodePath("SpriteDuckbody/SpriteFrontwheel")
 sprite_Backwheel = NodePath("SpriteDuckbody/SpriteBackwheel")
+progress_bar = NodePath("ProgressBar")
 
 [node name="SpriteDuckbody" type="Sprite2D" parent="."]
 texture = ExtResource("2_cg7tx")
@@ -161,6 +162,13 @@ icon = ExtResource("14_f0c5r")
 [node name="InterarctionArea" type="CollisionShape2D" parent="InteractionArea"]
 scale = Vector2(12.98, 12.1)
 shape = SubResource("RectangleShape2D_t5vq4")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(250, 60)
+offset_left = -117.5
+offset_top = 180.0
+offset_right = -113.5
+offset_bottom = 207.0
 
 [connection signal="body_entered" from="SensesArea2D" to="." method="_on_senses_area_2d_body_entered"]
 [connection signal="body_exited" from="SensesArea2D" to="." method="_on_senses_area_2d_body_exited"]

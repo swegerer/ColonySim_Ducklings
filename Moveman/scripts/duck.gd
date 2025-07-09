@@ -17,6 +17,9 @@ var known_locations: Array[Node] = []
 @export var sprite_Backwheel: Sprite2D
 
 
+@export var progress_bar: ProgressBar
+
+
 var is_hovered = false
 signal update_data
 var lock_ui = false
@@ -33,6 +36,8 @@ var visible_tile_counter: Dictionary = {}
 var time_since_last_fog_check = 0
 
 func _ready():
+	progress_bar.visible = false
+	
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
 	tilemap_fog = get_tree().get_root().get_node("Main/GameContainer/Duckland/Fog/Tilemap_Fog")
 	
@@ -52,6 +57,17 @@ func update_sprites():
 	# Update wheel rotations
 	sprite_Frontwheel.rotation += velocity.length() * 0.1
 	sprite_Backwheel.rotation += velocity.length() * 0.1
+
+func show_progress():
+	progress_bar.value = 0
+	progress_bar.visible = true
+
+func hide_progress():
+	progress_bar.visible = false
+
+func update_progress(value: float):
+	progress_bar.value = clamp(value, 0, progress_bar.max_value)
+	
 	
 func _process(delta):
 	update_sprites()
