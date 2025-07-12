@@ -1,6 +1,7 @@
 extends Node2D
 
 var discovered_locations: Array[Node] = []
+var inventory := Inventory.new()
 
 var data_manager
 

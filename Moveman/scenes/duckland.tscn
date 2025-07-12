@@ -53,5 +53,5 @@ script = ExtResource("6_dpjkd")
 [node name="Ponds" type="Node2D" parent="."]
 
 [node name="Pond" parent="Ponds" instance=ExtResource("7_otj65")]
-position = Vector2(-452, 335)
+position = Vector2(-1100, 614)
 scale = Vector2(0.4, 0.4)

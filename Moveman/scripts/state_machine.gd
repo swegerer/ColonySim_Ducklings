@@ -40,3 +40,7 @@ func _process(delta):
 		
 func play_quack():
 	audio_manager.play_quack(self.global_position)
+
+
+func get_state():
+	return current_state.name

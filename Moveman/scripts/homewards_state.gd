@@ -1,4 +1,4 @@
-extends "res://scripts/State.gd"
+extends "res://scripts/state.gd"
 
 @export var wander_speed := 100
 @export var wander_time := 3.0

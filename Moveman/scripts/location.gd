@@ -1,11 +1,19 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+@export var base_item: ItemData = preload("res://resource/item_data.tres")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func produce_item(duck: CharacterBody2D) -> ItemData:
+	var item_instance: ItemData = base_item.duplicate()
+	
+	var local_bonus = 0
+	
+	var character_bonus = duck.get_gathering_modifier()
+	
+	var global_bonus = GameData.get_global_modifier("gathering")
+	
+	item_instance.amount = item_instance.amount + 10
+	item_instance.name = "food"
+	
+	return item_instance

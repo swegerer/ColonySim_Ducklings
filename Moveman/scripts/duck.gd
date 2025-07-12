@@ -35,6 +35,8 @@ var visible_tile_counter: Dictionary = {}
 
 var time_since_last_fog_check = 0
 
+var inventory := Inventory.new()
+
 func _ready():
 	progress_bar.visible = false
 	
@@ -142,6 +144,12 @@ func exchange_locations(pond_node):
 			
 	changed_Info()
 
+func unload_to_base(spring_node):
+	var item = inventory.remove(0)
+	
+	if item:
+		if item.name == "food":
+			data_manager.set_value_on_resource("food", data_manager.get_value_on_resource("food") + item.amount)
 
 func reveal_fog():
 	currently_visible_tiles.clear()
@@ -179,3 +187,6 @@ func reveal_fog():
 					visible_tile_counter[tile_pos] = visible_tile_counter.get(tile_pos, 0) + 1
 					
 
+
+func get_gathering_modifier():
+	return 0

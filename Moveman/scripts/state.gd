@@ -32,8 +32,9 @@ func _on_Area2D_area_entered(area):
 	elif area.is_in_group("food") and takes_work:
 		state_machine.change_state("WorkState")
 	elif area.is_in_group("base"): 
-		print("-----------------------------")
 		if location_node not in character.known_locations:
 			character.known_locations.append(location_node)
+		
 		character.exchange_locations(location_node)  # Always sync locations if it's a base
+		character.unload_to_base(location_node)
 		

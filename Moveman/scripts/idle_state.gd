@@ -1,4 +1,4 @@
-extends "res://scripts/State.gd"
+extends "res://scripts/state.gd"
 
 func enter():
 	super()

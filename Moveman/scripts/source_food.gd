@@ -1,6 +1,6 @@
 
 class_name FoodSource
-extends "res://scripts/Location.gd"
+extends "res://scripts/location.gd"
 
 @export var slot_manager: WorkerSlotManager
 
