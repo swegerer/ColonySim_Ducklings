@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2r7alnx5ht1k"]
+[gd_scene load_steps=20 format=3 uid="uid://b2r7alnx5ht1k"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_cn85i"]
 [ext_resource type="Texture2D" uid="uid://tqh03vrxsbx6" path="res://sprites/duckbody.png" id="2_cg7tx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/search_state.gd" id="6_51ody"]
 [ext_resource type="Script" path="res://scripts/homewards_state.gd" id="7_3lp15"]
 [ext_resource type="Script" path="res://scripts/work_state.gd" id="8_3fphn"]
+[ext_resource type="Script" path="res://scripts/unload_state.gd" id="9_g57ys"]
 [ext_resource type="PackedScene" uid="uid://bcxci23ca5cru" path="res://scenes/hover_area_2d.tscn" id="9_wrtrm"]
 [ext_resource type="Script" path="res://scripts/button_camera.gd" id="10_gn3qm"]
 [ext_resource type="Script" path="res://scripts/infobox.gd" id="10_mxw3h"]
@@ -73,9 +74,12 @@ character = NodePath("../..")
 script = ExtResource("7_3lp15")
 character = NodePath("../..")
 
-[node name="WorkState" type="Node" parent="FSM" node_paths=PackedStringArray("character")]
+[node name="WorkState" type="Node2D" parent="FSM" node_paths=PackedStringArray("character")]
 script = ExtResource("8_3fphn")
 character = NodePath("../..")
+
+[node name="UnloadState" type="Node2D" parent="FSM"]
+script = ExtResource("9_g57ys")
 
 [node name="HoverArea2D" parent="." instance=ExtResource("9_wrtrm")]
 scale = Vector2(11.7, 13.3)

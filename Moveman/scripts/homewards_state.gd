@@ -24,6 +24,9 @@ func go_Home():
 	print("test")
 
 
-func on_collision():
-	print("Collided! Picking new direction.")
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("base"):
+		if character.has_item():
+			state_machine.change_state("UnloadState", area.get_parent(), character)
+
 

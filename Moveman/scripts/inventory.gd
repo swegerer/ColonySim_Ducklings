@@ -28,3 +28,9 @@ func remove(index: int) -> ItemData:
 		items.remove_at(index)
 		return ret
 	return null
+	
+func is_empty() -> bool:
+	if items.size() > 0:
+		return true
+	else:
+		return false

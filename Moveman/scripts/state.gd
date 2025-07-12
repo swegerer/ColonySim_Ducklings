@@ -18,7 +18,12 @@ func enter():
 
 func exit():
 	if character and character.has_node("SensesArea2D"):
-		character.get_node("SensesArea2D").area_entered.disconnect(_on_Area2D_area_entered)
+		var senses = character.get_node("SensesArea2D")
+		if senses.is_connected("area_entered", Callable(self, "_on_Area2D_area_entered")):
+			senses.disconnect("area_entered", Callable(self, "_on_Area2D_area_entered"))
+	
+	#if character and character.has_node("SensesArea2D"):
+	#	character.get_node("SensesArea2D").area_entered.disconnect(_on_Area2D_area_entered)
 
 func _on_Area2D_area_entered(area):
 	location_node = area.get_parent()

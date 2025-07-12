@@ -143,6 +143,12 @@ func exchange_locations(pond_node):
 			known_locations.append(loc)
 			
 	changed_Info()
+	
+func stop_movement():
+	velocity = Vector2(0, 0)
+	
+func has_item():
+	return !inventory.is_empty()
 
 func unload_to_base(spring_node):
 	var item = inventory.remove(0)
