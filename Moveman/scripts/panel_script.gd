@@ -1,10 +1,4 @@
-extends Panel
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+extends Control
 
 func _process(_delta):
 	# Update panel size every frame (you can optimize this later)

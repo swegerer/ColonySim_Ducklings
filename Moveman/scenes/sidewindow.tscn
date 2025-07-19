@@ -21,7 +21,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Sidewindow" type="MarginContainer"]
+[node name="Sidewindow" type="MarginContainer" node_paths=PackedStringArray("close_button")]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 11
 anchor_left = 1.0
@@ -34,6 +34,7 @@ theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_dftp1")
+close_button = NodePath("Control/TextureButton")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -91,3 +92,20 @@ stretch_mode = 4
 
 [node name="Stat_Block" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_w1tan")]
 layout_mode = 2
+
+[node name="Control" type="CenterContainer" parent="."]
+z_index = 10
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+z_index = 10
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_3qxai")
+ignore_texture_size = true
+stretch_mode = 4
+
+[connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]

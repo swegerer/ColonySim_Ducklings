@@ -1,21 +1,25 @@
 extends Node2D
 
-@export var camera: Camera2D  # The camera this listens for
+@export var duck_camera: Camera2D  # The camera this listens for
 
 @export var canvas: CanvasLayer
-var path = "res://scenes/sidewindow.tscn"
+var WINDOW_SCENE_PATH = "res://scenes/sidewindow.tscn"
 
+var duck_window: Node = null
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
-		camera.toggle_camera_off()
+		close_duck_window()
 	if event.is_action_pressed("ui_down"):
-		camera.toggle_camera_off()
+		close_duck_window()
 	if event.is_action_pressed("ui_left"):
-		camera.toggle_camera_off()
+		close_duck_window()
 	if event.is_action_pressed("ui_right"):
-		camera.toggle_camera_off()
+		close_duck_window()
+		
+	if event.is_action_pressed("escape"):
+		close_duck_window()
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:		
 		handle_double_click(get_global_mouse_position())
@@ -36,10 +40,29 @@ func handle_double_click(pos: Vector2):
 		var node = hit.collider
 		while node:
 			if node.is_in_group("ducks"):
-				node.focus_camera_on(node)
 				
-				var new_scene = load(path).instantiate()
-				canvas.add_child(new_scene)
+				node.focus_camera_on(node)
+				open_duck_window()
 				
 				return
 			node = node.get_parent()
+
+func open_duck_window():
+	if duck_window: return  # Bereits offen
+	duck_window = load(WINDOW_SCENE_PATH).instantiate()
+	
+	duck_window.closed.connect(func():
+		
+		
+		close_duck_window()
+		
+	)
+
+	canvas.add_child(duck_window)
+
+func close_duck_window():
+	if duck_window:
+		duck_camera.toggle_camera_off()
+		duck_window.queue_free()
+		duck_window = null
+

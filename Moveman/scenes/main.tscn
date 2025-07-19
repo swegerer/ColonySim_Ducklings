@@ -30,6 +30,6 @@ script = ExtResource("10_uylx7")
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("10_uoq5c")]
 visible = false
 
-[node name="InputListener" parent="." node_paths=PackedStringArray("camera", "canvas") instance=ExtResource("7_a2m1a")]
-camera = NodePath("../CameraDuck")
+[node name="InputListener" parent="." node_paths=PackedStringArray("duck_camera", "canvas") instance=ExtResource("7_a2m1a")]
+duck_camera = NodePath("../CameraDuck")
 canvas = NodePath("../CanvasLayer")

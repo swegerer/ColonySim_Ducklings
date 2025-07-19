@@ -37,7 +37,16 @@ var time_since_last_fog_check = 0
 
 var inventory := Inventory.new()
 
+
+func get_hypertext() -> String:
+	return "[b]%s[/b]" % [
+		name
+	]
+
 func _ready():
+	set_meta("id", name)  # Oder UUID, oder anderes eindeutiges
+	Globals.register_duck(self)
+	
 	progress_bar.visible = false
 	
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
@@ -103,7 +112,9 @@ func focus_camera_on(colider):
 	camera_duck.set_sideview()
 	camera_duck.toggle_camera()
 	
-	
+func unfocus_camera():
+	camera_duck.set_sideview_off()
+	camera_duck.toggle_camera()
 	
 	
 func u_lock_ui():

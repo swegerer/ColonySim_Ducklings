@@ -40,7 +40,6 @@ visibility_layer = 5
 script = ExtResource("5_vr0yi")
 
 [node name="Fog" type="Node2D" parent="."]
-visible = false
 
 [node name="Tilemap_Fog" type="TileMap" parent="Fog"]
 z_index = 3

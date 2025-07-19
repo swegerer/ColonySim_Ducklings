@@ -1,12 +1,14 @@
 extends Camera2D
 
-
-
 @onready var camera_main = get_tree().current_scene.find_child("CameraMain", true, false)
 
 var current_target: Node = null
 
 var camera_active = false
+
+func _ready():
+	Globals.camera_duck = self
+
 
 func follow(target: Node):
 	if get_parent():
@@ -19,7 +21,17 @@ func follow(target: Node):
 func set_sideview():
 	var screen_size = get_viewport().get_visible_rect().size
 	offset = Vector2(screen_size.x * 0.3, 0)
+	
 
+	
+	
+func set_sideview_off():
+	print("set sideview off")
+	offset = Vector2(0, 0)
+	
+
+# remove and rework this one old branch 
+# button in here is not well connected
 func toggle_camera():
 	var button = get_node("../ButtonCamera")
 	button.set_icon(true)
@@ -32,6 +44,8 @@ func toggle_camera():
 		make_current()  # Switch camera
 		camera_active = true
 	else:
+		# redundant weil in toggle_camera_off() auch
+		#camera_active = false
 		toggle_camera_off()
 	
 func toggle_camera_off():

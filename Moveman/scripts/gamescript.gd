@@ -7,8 +7,6 @@ var character_scene = preload("res://scenes/duck.tscn")
 
 @onready var audio_manager = get_node("/root/Main/AudioManager")  # Adjust path
 
-
-
 @onready var data_manager
 
 

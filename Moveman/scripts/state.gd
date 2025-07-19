@@ -3,8 +3,6 @@ extends Node
 var state_machine: Node = null
 @export var character: CharacterBody2D
 
-
-
 @export var speed: float = 100.0
 
 var takes_work: bool = true
@@ -13,7 +11,11 @@ var location_node
 
 func enter():
 	if character and character.has_node("SensesArea2D"):
-		character.get_node("SensesArea2D").area_entered.connect(_on_Area2D_area_entered)
+		var senses = character.get_node("SensesArea2D")
+		if senses.is_connected("area_entered", Callable(self, "_on_Area2D_area_entered")):
+			senses.disconnect("area_entered", Callable(self, "_on_Area2D_area_entered"))
+		senses.connect("area_entered", Callable(self, "_on_Area2D_area_entered"))
+
 	
 
 func exit():
