@@ -8,7 +8,10 @@ var items: Array[ItemData] = []
 
 # Gibt das Item am Index zurück (oder null)
 func get_inventar(index: int) -> ItemData:
+	print("INVENTORY: ASKED: " + str(index))
+	print("inveotry size: " + str(items.size()))
 	if index >= 0 and index < items.size():
+		print("INVENTORY: ID --> " + str(index))
 		return items[index]
 	return null
 

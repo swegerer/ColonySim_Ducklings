@@ -42,6 +42,7 @@ script = ExtResource("5_vr0yi")
 [node name="Fog" type="Node2D" parent="."]
 
 [node name="Tilemap_Fog" type="TileMap" parent="Fog"]
+visible = false
 z_index = 3
 position = Vector2(5, -5)
 tile_set = SubResource("TileSet_atsxk")

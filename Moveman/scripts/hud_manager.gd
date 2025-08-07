@@ -31,9 +31,9 @@ func _process(_delta):
 			
 
 func _on_update_locations_display(locations):
-	var text = "Known Locations:\n"
+	var text := "[font_size={35}][b][u]Ducks:[/u][/b][/font_size]\n"
 	for loc in locations:
-		text += "- Pos at: %s\n" % str(loc.position)
+		text += loc.get_hypertext()
 	locations_list.text = text
 
 
@@ -45,10 +45,12 @@ func _on_civ_updated_display(type, civ_data):
 	if type == "duck":
 		civ_duck.display_slot_update(type, civ_data)
 	
-	var text := "[font_size={35}][b][u]Ducks:[/u][/b][/font_size]  \n"
+	var text := "[font_size={35}][b][u]Ducks:[/u][/b][/font_size]\n"
 	for duck in Globals.ducks:
 		var id = duck.get_meta("id")
-		text += "[font_size={20}][url=%s]%s[/url][/font_size]\n" % [id, duck.get_hypertext()]
+		text += "[font_size={20}][url=%s]%s[/url][/font_size]" % [id, duck.get_hypertext()]
+		#text += "[meta=%s] [img={35}x{35}]res://sprites/camera_on.png[/img][/meta]\n" % [id]
+		text += "[url=%s] [img={35}x{35}]res://sprites/camera_on.png[/img][/url]\n" % [id]
 	character_list.bbcode_enabled = true
 	character_list.clear()
 	character_list.append_text(text)

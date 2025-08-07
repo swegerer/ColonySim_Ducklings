@@ -18,3 +18,7 @@ func register_location(location):
 	### notwendig ist bevor ich signal aussende 
 	data_manager.new_location(location)
 
+
+func get_hypertext() -> String:
+	return "[b]%s[/b] at (%.0f, %.0f)\n" % [name, position.x, position.y]
+	

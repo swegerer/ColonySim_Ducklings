@@ -6,7 +6,7 @@ extends Node2D
 var WINDOW_SCENE_PATH = "res://scenes/sidewindow.tscn"
 
 var duck_window: Node = null
-
+var current_duck
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
@@ -40,7 +40,7 @@ func handle_double_click(pos: Vector2):
 		var node = hit.collider
 		while node:
 			if node.is_in_group("ducks"):
-				
+				current_duck = node
 				node.focus_camera_on(node)
 				open_duck_window()
 				
@@ -50,7 +50,7 @@ func handle_double_click(pos: Vector2):
 func open_duck_window():
 	if duck_window: return  # Bereits offen
 	duck_window = load(WINDOW_SCENE_PATH).instantiate()
-	
+	duck_window.set_duck(current_duck)
 	duck_window.closed.connect(func():
 		
 		
