@@ -16,7 +16,7 @@ script = ExtResource("1_luocl")
 [node name="Sprite_Pond" type="Sprite2D" parent="."]
 texture = ExtResource("2_irmgu")
 
-[node name="Area2D" type="Area2D" parent="." groups=["base"]]
+[node name="Area2D" type="Area2D" parent="."]
 
 [node name="Collision_Food" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_kn73e")

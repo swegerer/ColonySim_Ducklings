@@ -14,4 +14,6 @@ func set_item_data(item_data: ItemData) -> void:
 		icon_texture_rect.texture = icon_texture
 
 	name_text.clear()
-	name_text.append_text("[b]%s[/b] x%d" % [item_data.name, item_data.amount])
+	
+	if item_data.amount > 1:
+		name_text.append_text("[b]%s[/b] x%d" % [item_data.name, item_data.amount])

@@ -16,7 +16,7 @@ func produce_item(duck: CharacterBody2D) -> ItemData:
 	
 	item_instance.amount = item_instance.amount + 10
 	item_instance.name = "food"
-	item_instance.icon = tex
+	item_instance.icon = tex.get_image()
 	
 	return item_instance
 

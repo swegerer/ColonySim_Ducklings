@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://csqm3yo6ocit1"]
 
-[ext_resource type="Script" path="res://scenes/item_slot.gd" id="1_dqyyw"]
+[ext_resource type="Script" path="res://scripts/item_slot.gd" id="1_oywl6"]
 
 [node name="item_slot" type="Panel"]
 custom_minimum_size = Vector2(150, 150)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_dqyyw")
+script = ExtResource("1_oywl6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(140, 140)
@@ -16,11 +16,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="icon" type="TextureRect" parent="MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]

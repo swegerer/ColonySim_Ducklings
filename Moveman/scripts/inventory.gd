@@ -6,12 +6,12 @@ class_name Inventory
 # Interne Liste zur Verwaltung der Items
 var items: Array[ItemData] = []
 
+signal inventory_changed
+
 # Gibt das Item am Index zurück (oder null)
 func get_inventar(index: int) -> ItemData:
-	print("INVENTORY: ASKED: " + str(index))
-	print("inveotry size: " + str(items.size()))
+	
 	if index >= 0 and index < items.size():
-		print("INVENTORY: ID --> " + str(index))
 		return items[index]
 	return null
 
@@ -19,6 +19,7 @@ func get_inventar(index: int) -> ItemData:
 func add(item: ItemData) -> bool:
 	if items.size() < size:
 		items.append(item.duplicate())  # duplizieren für Sicherheit
+		emit_signal("inventory_changed")
 		return true
 	else:
 		print("Inventory full")
@@ -26,9 +27,11 @@ func add(item: ItemData) -> bool:
 
 # Entfernt das Item am gegebenen Index.
 func remove(index: int) -> ItemData:
+	
 	if index >= 0 and index < items.size():
 		var ret = items[index].duplicate()
 		items.remove_at(index)
+		emit_signal("inventory_changed")
 		return ret
 	return null
 	

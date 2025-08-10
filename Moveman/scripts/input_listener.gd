@@ -4,9 +4,12 @@ extends Node2D
 
 @export var canvas: CanvasLayer
 var WINDOW_SCENE_PATH = "res://scenes/sidewindow.tscn"
+var WINDOW_LOCATION_SCENE_PATH = "res://scenes/sidewindow_locations.tscn"
 
 var duck_window: Node = null
+var location_window: Node = null
 var current_duck
+var current_location
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
@@ -45,6 +48,11 @@ func handle_double_click(pos: Vector2):
 				open_duck_window()
 				
 				return
+			elif node.is_in_group("base"):
+				current_location = node
+				node.focus_camera_on(node)
+				open_location_window()
+				return
 			node = node.get_parent()
 
 func open_duck_window():
@@ -65,4 +73,25 @@ func close_duck_window():
 		duck_camera.toggle_camera_off()
 		duck_window.queue_free()
 		duck_window = null
+
+
+func open_location_window():
+	if location_window: return  # Bereits offen
+	location_window = load(WINDOW_LOCATION_SCENE_PATH).instantiate()
+	location_window.set_location(current_location)
+	location_window.closed.connect(func():
+		
+		
+		close_location_window()
+		
+	)
+
+	canvas.add_child(location_window)
+
+func close_location_window():
+	if location_window:
+		duck_camera.toggle_camera_off()
+		location_window.queue_free()
+		location_window = null
+
 

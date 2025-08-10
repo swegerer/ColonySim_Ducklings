@@ -2,7 +2,7 @@ extends MarginContainer
 
 @export var close_button: TextureButton
 
-var current_duck: Node
+var current_location: Node
 var ITEM_SLOT_PATH = "res://scenes/item_slot.tscn"
 var hbox_inventory: HBoxContainer 
 
@@ -16,7 +16,7 @@ func _ready():
 	close_button.pressed.connect(_on_close_pressed)
 
 func _on_close_pressed():
-	current_duck.inventory.inventory_changed.disconnect(_on_inventory_changed)
+	current_location.inventory.inventory_changed.disconnect(_on_inventory_changed)
 	emit_signal("closed")
 	queue_free()
 
@@ -28,13 +28,13 @@ func update_size():
 
 func _on_inventory_changed():
 	print("ON INVENTORY CHANGED _----------------")
-	inventory_display.display_update(current_duck.inventory)
+	inventory_display.display_update(current_location.inventory)
 
-func set_duck(duck: Node) -> void:
+func set_location(location: Node) -> void:
 	
 		
-	current_duck = duck
-	current_duck.inventory.inventory_changed.connect(_on_inventory_changed)
+	current_location = location
+	current_location.inventory.inventory_changed.connect(_on_inventory_changed)
 	#draw_inventory()
 	#update_ui_with_duck_info()
 	

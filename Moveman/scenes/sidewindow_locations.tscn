@@ -1,13 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxpdqxixkfr30"]
+[gd_scene load_steps=6 format=3 uid="uid://cdsdr8veinkuu"]
 
-[ext_resource type="Script" path="res://scripts/sidewindow.gd" id="1_dftp1"]
-[ext_resource type="FontFile" uid="uid://dbfl35y5xc6b4" path="res://fonts/Honey Salt.otf" id="2_dxox0"]
-[ext_resource type="Texture2D" uid="uid://civkcuju7tiw5" path="res://sprites/check_normal.png" id="3_3qxai"]
-[ext_resource type="Texture2D" uid="uid://bgptf8q68qx83" path="res://sprites/check_pressed.png" id="4_dasx8"]
-[ext_resource type="PackedScene" uid="uid://c7ahw0544hqkr" path="res://scenes/stat_block.tscn" id="4_w1tan"]
-[ext_resource type="Texture2D" uid="uid://cidiqdpub0von" path="res://sprites/check_hover.png" id="5_sbcpb"]
-[ext_resource type="Texture2D" uid="uid://c23isvwrepgpe" path="res://sprites/check_disabled.png" id="6_p2cxk"]
-[ext_resource type="PackedScene" uid="uid://5mfgi4csf5fo" path="res://scenes/inventory_display.tscn" id="8_2jmgc"]
+[ext_resource type="Script" path="res://scripts/sidewindow_locations.gd" id="1_esc0v"]
+[ext_resource type="Texture2D" uid="uid://civkcuju7tiw5" path="res://sprites/check_normal.png" id="3_umwyu"]
+[ext_resource type="PackedScene" uid="uid://5mfgi4csf5fo" path="res://scenes/inventory_display.tscn" id="8_ujufb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7qjk"]
 bg_color = Color(0.645832, 0.606941, 0.363527, 1)
@@ -34,7 +29,7 @@ grow_vertical = 2
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("1_dftp1")
+script = ExtResource("1_esc0v")
 close_button = NodePath("Control/TextureButton")
 inventory_display = NodePath("Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/InventoryDisplay")
 
@@ -73,29 +68,7 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(475, 125)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_dxox0")
-theme_override_font_sizes/font_size = 64
-
-[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture_normal = ExtResource("3_3qxai")
-texture_pressed = ExtResource("4_dasx8")
-texture_hover = ExtResource("5_sbcpb")
-texture_disabled = ExtResource("6_p2cxk")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Stat_Block" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_w1tan")]
-layout_mode = 2
-
-[node name="InventoryDisplay" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource("8_2jmgc")]
+[node name="InventoryDisplay" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource("8_ujufb")]
 layout_mode = 2
 
 [node name="Control" type="CenterContainer" parent="."]
@@ -109,7 +82,7 @@ size_flags_vertical = 0
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("3_3qxai")
+texture_normal = ExtResource("3_umwyu")
 ignore_texture_size = true
 stretch_mode = 4
 
