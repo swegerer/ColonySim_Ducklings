@@ -15,9 +15,3 @@ func ask_entry(duck):
 
 func get_worktime():
 	return worktime
-
-
-
-
-
-

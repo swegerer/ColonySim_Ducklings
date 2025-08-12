@@ -33,8 +33,9 @@ func set_sideview_off():
 # remove and rework this one old branch 
 # button in here is not well connected
 func toggle_camera():
-	var button = get_node("../ButtonCamera")
-	button.set_icon(true)
+	var button = get_node_or_null("../ButtonCamera")
+	if button:
+		button.set_icon(true)
 	
 	# Wonderful
 	get_node("..").u_lock_ui()
@@ -50,8 +51,9 @@ func toggle_camera():
 	
 func toggle_camera_off():
 	if camera_active:
-		var button = get_node("../ButtonCamera")
-		button.set_icon(false)
+		var button = get_node_or_null("../ButtonCamera")
+		if button:
+			button.set_icon(false)
 	
 		camera_main.position = global_position
 		camera_main.enabled = true
@@ -64,4 +66,3 @@ func _exit_tree():
 	if has_node("../ButtonCamera"):
 		var button = get_node("../ButtonCamera")
 		button.set_icon(false)
-

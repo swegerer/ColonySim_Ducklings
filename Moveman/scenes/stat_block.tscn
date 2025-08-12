@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7ahw0544hqkr"]
 
-[ext_resource type="Script" path="res://scripts/stat_block.gd" id="1_7x6eq"]
+[ext_resource type="Script" uid="uid://co8ovfvjs7byx" path="res://scripts/stat_block.gd" id="1_7x6eq"]
 [ext_resource type="PackedScene" uid="uid://0jpq140doxoa" path="res://scenes/stat_line.tscn" id="1_khemn"]
 
 [node name="Stat_Block" type="MarginContainer" node_paths=PackedStringArray("VBox")]

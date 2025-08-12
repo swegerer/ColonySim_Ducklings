@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csqm3yo6ocit1"]
 
-[ext_resource type="Script" path="res://scripts/item_slot.gd" id="1_oywl6"]
+[ext_resource type="Script" uid="uid://cgrvhi6f1d4l8" path="res://scripts/item_slot.gd" id="1_oywl6"]
 
 [node name="item_slot" type="Panel"]
 custom_minimum_size = Vector2(150, 150)

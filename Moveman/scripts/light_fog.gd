@@ -74,6 +74,3 @@ func creep_light_fog_gradually():
 		# Wait a random amount between 1 and 2 seconds
 		var delay = rng.randf_range(0.1, 1.0)
 		await get_tree().create_timer(delay).timeout
-
-
-

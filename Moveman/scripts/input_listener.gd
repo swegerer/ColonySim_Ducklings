@@ -59,6 +59,7 @@ func open_duck_window():
 	if duck_window: return  # Bereits offen
 	duck_window = load(WINDOW_SCENE_PATH).instantiate()
 	duck_window.set_duck(current_duck)
+	
 	duck_window.closed.connect(func():
 		
 		
@@ -67,6 +68,7 @@ func open_duck_window():
 	)
 
 	canvas.add_child(duck_window)
+	duck_window.inventory_display.display_update(current_duck.inventory)
 
 func close_duck_window():
 	if duck_window:
@@ -79,6 +81,7 @@ func open_location_window():
 	if location_window: return  # Bereits offen
 	location_window = load(WINDOW_LOCATION_SCENE_PATH).instantiate()
 	location_window.set_location(current_location)
+	
 	location_window.closed.connect(func():
 		
 		
@@ -87,11 +90,10 @@ func open_location_window():
 	)
 
 	canvas.add_child(location_window)
+	location_window.inventory_display.display_update(current_location.inventory)
 
 func close_location_window():
 	if location_window:
 		duck_camera.toggle_camera_off()
 		location_window.queue_free()
 		location_window = null
-
-

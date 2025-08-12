@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsn0wo1napsc6"]
 
-[ext_resource type="Script" path="res://scripts/display_slot.gd" id="1_17gjk"]
+[ext_resource type="Script" uid="uid://cdlp8keo17p7s" path="res://scripts/display_slot.gd" id="1_17gjk"]
 [ext_resource type="Texture2D" uid="uid://d3sgh2bdodwnh" path="res://sprites/duckwheel.png" id="1_wja0t"]
-[ext_resource type="Script" path="res://scripts/panel_script.gd" id="2_7tmp5"]
+[ext_resource type="Script" uid="uid://x6sgb3ur45jj" path="res://scripts/panel_script.gd" id="2_7tmp5"]
 [ext_resource type="LabelSettings" uid="uid://b0qa8iv8qbdju" path="res://label_settings/basic_label.tres" id="2_ngc1p"]
 
 [node name="ResourceSlot" type="HBoxContainer" node_paths=PackedStringArray("icon", "label")]

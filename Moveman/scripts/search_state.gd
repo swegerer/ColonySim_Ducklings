@@ -43,4 +43,3 @@ func pick_random_direction():
 func on_collision():
 	print("Collided! Picking new direction.")
 	pick_random_direction()
-

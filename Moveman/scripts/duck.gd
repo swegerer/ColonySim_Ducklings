@@ -26,6 +26,7 @@ var lock_ui = false
 
 var data_manager
 
+var home_location: Node
 
 var tilemap_fog
 
@@ -161,10 +162,14 @@ func stop_movement():
 func has_item():
 	return !inventory.is_empty()
 
+# Ausgelegt dafür dass es die einzige basis ist. Food im HUD wird hier
+# händisch angepasst. Signal im data_manager/spring wäre notwending.
 func unload_to_base(spring_node):
-	var item = inventory.remove(0)
+	var item
+	while !inventory.is_empty():
+		item = inventory.remove(0)
+		spring_node.inventory.add(item)
 	
-	if item:
 		if item.name == "food":
 			data_manager.set_value_on_resource("food", data_manager.get_value_on_resource("food") + item.amount)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkecn8mb1im6b"]
 
-[ext_resource type="Script" path="res://scripts/slot_worker_manager.gd" id="1_5fcrr"]
+[ext_resource type="Script" uid="uid://djxpauquu2bvd" path="res://scripts/slot_worker_manager.gd" id="1_5fcrr"]
 [ext_resource type="Texture2D" uid="uid://b0glnp2pukri5" path="res://sprites/pond_icon_01.png" id="2_7gypm"]
 [ext_resource type="Texture2D" uid="uid://bk1clwx6tevtl" path="res://sprites/pond_icon_02.png" id="3_0xsml"]
 

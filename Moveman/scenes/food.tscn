@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb0lbcdwe1wmr"]
 
-[ext_resource type="Script" path="res://scripts/source_food.gd" id="1_u6bro"]
+[ext_resource type="Script" uid="uid://by1okolhuk2qt" path="res://scripts/source_food.gd" id="1_u6bro"]
 [ext_resource type="Texture2D" uid="uid://clmbf0u8n5574" path="res://sprites/food_01.png" id="2_vtc7n"]
 [ext_resource type="PackedScene" uid="uid://bkecn8mb1im6b" path="res://scenes/slot_worker_manager.tscn" id="3_pfkri"]
 

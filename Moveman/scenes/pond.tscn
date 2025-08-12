@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu2enu454rb2w"]
 
 [ext_resource type="Texture2D" uid="uid://bhx2ch8677j4n" path="res://sprites/pond.png" id="1_5f8a5"]
-[ext_resource type="Script" path="res://scripts/source_food.gd" id="1_cswpb"]
+[ext_resource type="Script" uid="uid://by1okolhuk2qt" path="res://scripts/source_food.gd" id="1_cswpb"]
 [ext_resource type="PackedScene" uid="uid://bkecn8mb1im6b" path="res://scenes/slot_worker_manager.tscn" id="4_6douc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ak881"]
 radius = 582.0
 height = 1200.0
 
-[node name="Pond" type="Node2D" node_paths=PackedStringArray("slot_manager")]
+[node name="Pond" type="Node2D" node_paths=PackedStringArray("slot_manager") groups=["food"]]
 script = ExtResource("1_cswpb")
 slot_manager = NodePath("slot_worker_manager")
 

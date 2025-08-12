@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 
@@ -22,6 +22,4 @@ func produce_item(duck: CharacterBody2D) -> ItemData:
 
 
 func get_hypertext() -> String:
-	return "[b]%s[/b]" % [
-		name
-	]
+	return "[b]%s[/b] at (%.0f, %.0f)\n" % [name, position.x, position.y]

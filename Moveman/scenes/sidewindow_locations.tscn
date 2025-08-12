@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdsdr8veinkuu"]
 
-[ext_resource type="Script" path="res://scripts/sidewindow_locations.gd" id="1_esc0v"]
+[ext_resource type="Script" uid="uid://bsmf8b00ohxkx" path="res://scripts/sidewindow_locations.gd" id="1_esc0v"]
 [ext_resource type="Texture2D" uid="uid://civkcuju7tiw5" path="res://sprites/check_normal.png" id="3_umwyu"]
 [ext_resource type="PackedScene" uid="uid://5mfgi4csf5fo" path="res://scenes/inventory_display.tscn" id="8_ujufb"]
 

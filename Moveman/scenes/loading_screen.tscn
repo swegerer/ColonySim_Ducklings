@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bp0e2nq8fdsi5"]
 
-[ext_resource type="Script" path="res://scripts/loading_screen.gd" id="1_kaumq"]
+[ext_resource type="Script" uid="uid://c0q13474n673l" path="res://scripts/loading_screen.gd" id="1_kaumq"]
 
 [node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("1_kaumq")

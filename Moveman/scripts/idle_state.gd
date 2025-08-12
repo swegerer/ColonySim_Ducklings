@@ -12,4 +12,3 @@ func update(delta):
 
 func on_collision():
 	print("Collided! Picking new direction.")
-

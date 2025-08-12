@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcxci23ca5cru"]
 
-[ext_resource type="Script" path="res://scripts/hover_area_2d.gd" id="1_hojfx"]
+[ext_resource type="Script" uid="uid://3ecrqtukjsy3" path="res://scripts/hover_area_2d.gd" id="1_hojfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djf82"]
 

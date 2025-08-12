@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://d33hbdwewwk41"]
 
-[ext_resource type="Script" path="res://scripts/spring.gd" id="1_luocl"]
+[ext_resource type="Script" uid="uid://bcakgst6lob6k" path="res://scripts/spring.gd" id="1_luocl"]
 [ext_resource type="Texture2D" uid="uid://bnqjdsbyva6ll" path="res://sprites/spring.png" id="2_irmgu"]
-[ext_resource type="Script" path="res://scripts/spawn_button.gd" id="3_wr7d5"]
+[ext_resource type="Script" uid="uid://b0m2hec1wvfuo" path="res://scripts/spawn_button.gd" id="3_wr7d5"]
 [ext_resource type="Texture2D" uid="uid://ep3cplxu7nas" path="res://sprites/icon_03.png" id="3_yi5yo"]
 [ext_resource type="Texture2D" uid="uid://my4rbgwy73xg" path="res://sprites/icon_01.png" id="6_htty3"]
 

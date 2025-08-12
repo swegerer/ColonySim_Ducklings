@@ -25,8 +25,9 @@ func go_Home():
 
 
 func _on_Area2D_area_entered(area):
-	if area.is_in_group("base"):
-		if character.has_item():
-			state_machine.change_state("UnloadState", area.get_parent(), character)
-
-
+	if area.get_parent().is_in_group("base"):
+		#character.unload_to_base(area.get_parent())
+		#if character.has_item():
+		
+		# TODO: only if unload is necessary
+		state_machine.change_state("UnloadState", area.get_parent(), character)

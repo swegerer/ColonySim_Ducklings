@@ -27,7 +27,7 @@ func update_size():
 	custom_minimum_size = Vector2(target_width, 0)  # height can be handled by layout
 
 func _on_inventory_changed():
-	print("ON INVENTORY CHANGED _----------------")
+	print("ON LOCATION INVENTORY CHANGED _----------------")
 	inventory_display.display_update(current_location.inventory)
 
 func set_location(location: Node) -> void:

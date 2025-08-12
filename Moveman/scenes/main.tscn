@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba8yw2mj62mpb"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_q68qb"]
+[ext_resource type="Script" uid="uid://cr6h7m1b1rwd1" path="res://scripts/main.gd" id="1_q68qb"]
 [ext_resource type="PackedScene" uid="uid://shxuxksrrup3" path="res://scenes/audio_manager.tscn" id="4_j7g5b"]
-[ext_resource type="Script" path="res://scripts/camera_main.gd" id="5_f0gc1"]
+[ext_resource type="Script" uid="uid://bh2m677pkueim" path="res://scripts/camera_main.gd" id="5_f0gc1"]
 [ext_resource type="PackedScene" uid="uid://darg2nt0qujan" path="res://scenes/camera_duck.tscn" id="6_pk7jy"]
 [ext_resource type="PackedScene" uid="uid://dx5g475xvk45n" path="res://scenes/input_listener.tscn" id="7_a2m1a"]
-[ext_resource type="Script" path="res://scripts/data_manager.gd" id="8_e0i8b"]
+[ext_resource type="Script" uid="uid://dtat6suebik8p" path="res://scripts/data_manager.gd" id="8_e0i8b"]
 [ext_resource type="PackedScene" uid="uid://cn1xs3377c7ep" path="res://scenes/hud.tscn" id="10_uoq5c"]
-[ext_resource type="Script" path="res://scripts/hud_manager.gd" id="10_uylx7"]
+[ext_resource type="Script" uid="uid://blswqrg0cwbdc" path="res://scripts/hud_manager.gd" id="10_uylx7"]
 
 [node name="Main" type="Node2D" groups=["main_scene"]]
 script = ExtResource("1_q68qb")

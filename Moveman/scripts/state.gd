@@ -30,18 +30,16 @@ func exit():
 func _on_Area2D_area_entered(area):
 	location_node = area.get_parent()
 	
-	if area.is_in_group("food") and takes_work:
-		print("ChangeState: " + character.name +  "on place: ")
+	if area.is_in_group("food"):
 		state_machine.change_state("WorkState", area.get_parent(), character)
-	elif area.is_in_group("food") and location_node not in character.known_locations:
-		character.known_locations.append(location_node)
-		state_machine.change_state("HomewardsState")
-	elif area.is_in_group("food") and takes_work:
-		state_machine.change_state("WorkState")
-	elif area.is_in_group("base"): 
 		if location_node not in character.known_locations:
 			character.known_locations.append(location_node)
-		
+			
+	
+	elif location_node.is_in_group("base"): 
+		if location_node not in character.known_locations:
+			character.known_locations.append(location_node)
+			
 		character.exchange_locations(location_node)  # Always sync locations if it's a base
-		character.unload_to_base(location_node)
+		#character.unload_to_base(location_node)
 		

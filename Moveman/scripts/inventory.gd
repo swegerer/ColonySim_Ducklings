@@ -37,6 +37,6 @@ func remove(index: int) -> ItemData:
 	
 func is_empty() -> bool:
 	if items.size() > 0:
-		return true
-	else:
 		return false
+	else:
+		return true
