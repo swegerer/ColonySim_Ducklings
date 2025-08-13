@@ -19,7 +19,7 @@ var known_locations: Array[Node] = []
 
 @export var progress_bar: ProgressBar
 
-
+var in_sense_area := false
 var is_hovered = false
 signal update_data
 var lock_ui = false
@@ -45,6 +45,9 @@ func get_hypertext() -> String:
 	]
 
 func _ready():
+	sense_area.body_entered.connect(_on_sense_area_body_entered)
+	sense_area.body_exited.connect(_on_sense_area_body_exited)
+	
 	set_meta("id", name)  # Oder UUID, oder anderes eindeutiges
 	Globals.register_duck(self)
 	
@@ -62,13 +65,14 @@ func _ready():
 	data_manager.change_max_on_resource("food", 20)
 
 func update_sprites():
+	var speed = velocity.length()
 	if velocity.x > 0:
 		sprite_Duckbody.flip_h = true
 	elif velocity.x < 0:
 		sprite_Duckbody.flip_h = false
 	# Update wheel rotations
-	sprite_Frontwheel.rotation += velocity.length() * 0.1
-	sprite_Backwheel.rotation += velocity.length() * 0.1
+	sprite_Frontwheel.rotation += speed * 0.1
+	sprite_Backwheel.rotation += speed * 0.1
 
 func show_progress():
 	progress_bar.value = 0
@@ -82,7 +86,8 @@ func update_progress(value: float):
 	
 	
 func _process(delta):
-	update_sprites()
+	if velocity != Vector2.ZERO:
+		update_sprites()
 
 func changed_Info():
 	update_data.emit()
@@ -134,11 +139,16 @@ func _physics_process(delta):
 		if fsm and fsm.current_state.has_method("on_collision"):
 			fsm.current_state.on_collision()
 			
-	if sense_area.get_overlapping_bodies().has(self):
-		reveal_fog()
 		
 
-	
+func _on_sense_area_body_entered(body):
+	if body == self:
+		in_sense_area = true
+		reveal_fog()
+
+func _on_sense_area_body_exited(body):
+	if body == self:
+		in_sense_area = false
 	
 func exchange_locations(pond_node):
 	# Get pond's discovered locations

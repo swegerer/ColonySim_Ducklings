@@ -11,4 +11,3 @@ func _ready():
 
 func display_slot_update(resource_name, resource):
 	label.text = str(resource.current_value)
-

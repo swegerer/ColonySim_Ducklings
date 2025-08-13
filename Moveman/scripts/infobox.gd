@@ -13,4 +13,3 @@ func refresh_info():
 	location_list.clear()
 	for loc in character.known_locations:
 		location_list.append_text(str(loc.position))
-

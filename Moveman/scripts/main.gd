@@ -36,5 +36,3 @@ func load_scene(scene_path):
 	# Now that the scene is confirmed loaded, mark as ready
 	print("Scene loaded successfully:", scene_path)
 	get_tree().get_root().get_node("Main/LoadingManager").mark_loaded()
-
-
