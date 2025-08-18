@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://t6einiua6sio"]
+[gd_scene load_steps=9 format=3 uid="uid://t6einiua6sio"]
 
 [ext_resource type="Script" uid="uid://bxdw1s4ynungr" path="res://scripts/gamescript.gd" id="1_yjri5"]
 [ext_resource type="PackedScene" uid="uid://d33hbdwewwk41" path="res://scenes/spring.tscn" id="2_ios16"]
 [ext_resource type="Texture2D" uid="uid://8d8bsmkcgark" path="res://sprites/tilemap_fog.png" id="5_hmgsk"]
 [ext_resource type="Script" uid="uid://c52yeppsu8ubj" path="res://scripts/character_manager.gd" id="5_vr0yi"]
 [ext_resource type="Script" uid="uid://bqcshiu0p7557" path="res://scripts/light_fog.gd" id="6_dpjkd"]
-[ext_resource type="Script" uid="uid://ci3i3fiwxsqgv" path="res://scripts/maploader.gd" id="7_4xdtw"]
 [ext_resource type="PackedScene" uid="uid://bu2enu454rb2w" path="res://scenes/pond.tscn" id="7_otj65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ufvbf"]
@@ -52,11 +51,8 @@ layer_0/tile_data = PackedInt32Array(3, 131072, 1, 65539, 196608, 1, 131075, 131
 script = ExtResource("6_dpjkd")
 
 [node name="Ponds" type="Node2D" parent="."]
+z_index = 1
 
 [node name="Pond" parent="Ponds" instance=ExtResource("7_otj65")]
 position = Vector2(-1100, 614)
 scale = Vector2(0.4, 0.4)
-
-[node name="Maploader_holder" type="Node2D" parent="."]
-scale = Vector2(0.3, 0.3)
-script = ExtResource("7_4xdtw")

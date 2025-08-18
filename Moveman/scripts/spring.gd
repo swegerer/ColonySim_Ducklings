@@ -2,6 +2,8 @@ extends Node2D
 
 var discovered_locations: Array[Node] = []
 var inventory := Inventory.new()
+@export var base_item: ItemData = preload("res://resource/item_data.tres")
+var tex = preload("res://sprites/food_01.png")
 
 var data_manager
 @onready var camera_duck = get_tree().current_scene.find_child("CameraDuck", true, false)
@@ -12,6 +14,11 @@ func _ready():
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
 	
 	print("DataManager reference:", data_manager)  # Debugging
+	var item_instance: ItemData = base_item.duplicate()
+	item_instance.amount = item_instance.amount + 25
+	item_instance.name = "food"
+	item_instance.icon = tex.get_image()
+	inventory.add(item_instance.duplicate())
 	
 
 

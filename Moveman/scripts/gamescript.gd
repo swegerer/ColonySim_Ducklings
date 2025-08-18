@@ -9,6 +9,7 @@ var character_scene = preload("res://scenes/duck.tscn")
 
 @onready var data_manager
 
+var map = preload("res://scenes/maploader_holder.tscn").instantiate()
 
 #GAME VARIABLES (GLOBAL?)
 var duck_cost = 8
@@ -18,6 +19,10 @@ func _ready():
 	data_manager = get_tree().get_root().get_node("Main/DataManager")
 	
 	audio_manager.play_sound("game_starts")
+	
+	add_child(map)
+
+	print("Map children: ", get_tree().get_root().find_child("Maploader_holder", true, false))
 	
 
 	#add_child(hud)  # Make sure it's on top of everything

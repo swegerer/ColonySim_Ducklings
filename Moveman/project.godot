@@ -15,7 +15,7 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/fullsize=false
 boot_splash/image="res://sprites/quintus_00.png"
-config/icon="res://sprites/icon.png"
+config/icon="uid://c030p0ggbqeb6"
 
 [autoload]
 
