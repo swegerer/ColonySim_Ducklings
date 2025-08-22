@@ -5,7 +5,7 @@ var move_speed = 600
 var zoom_speed = 1.5
 
 # Initial zoom level
-var zoom_level = 1.0
+var zoom_level = 1.5
 
 func _ready():
 	# Set the initial zoom level

@@ -27,7 +27,7 @@ radius = 0.01
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5vq4"]
 
 [node name="Mark" type="CharacterBody2D" node_paths=PackedStringArray("fsm", "camera_button", "sprite_Duckbody", "sprite_Frontwheel", "sprite_Backwheel", "progress_bar") groups=["ducks"]]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_cn85i")
 fsm = NodePath("FSM")
 camera_button = NodePath("ButtonCamera")

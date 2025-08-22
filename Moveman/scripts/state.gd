@@ -3,7 +3,7 @@ extends Node
 var state_machine: Node = null
 @export var character: CharacterBody2D
 
-@export var speed: float = 100.0
+@export var speed: float = 30.0
 
 var takes_work: bool = true
 var location_node

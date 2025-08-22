@@ -19,13 +19,15 @@ func get_civ_summaries():
 func get_civ_count(civ_name):
 	print("")
 	
-func add_character(parent: Node, type: String, character_scene: PackedScene):
+func add_character(parent: Node, type: String, character_scene):
 	if not civ_groups.has(type): return
 	
-	var character = character_scene.instantiate()
+	#var character = character_scene.instantiate()
+	var character = character_scene
 	character.name = "Character_" + str(civ_containers[type].size() + 1)
 	
-	parent.add_child(character)
+	character.reparent(parent)
+	#parent.add_child(character)
 	
 
 	
